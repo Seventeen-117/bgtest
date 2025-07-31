@@ -1,0 +1,148 @@
+# 动态数据源测试配置
+# 支持多种数据源：文件、数据库、Redis、混合数据源
+
+# 1. 基础文件数据源测试
+file_data_source_test:
+  case_id: "FILE_001"
+  description: "从文件加载测试数据"
+  data_source: "file"
+  url: "https://api.example.com/test"
+  method: "POST"
+  params:
+    user_id: 123
+    action: "login"
+  expected_result:
+    status_code: 200
+    success: true
+
+# 2. 数据库数据源测试
+database_data_source_test:
+  case_id: "DB_001"
+  description: "从数据库加载测试数据"
+  data_source: "database"
+  # 使用db://格式指定数据库查询
+  db_query: "db://mysql/test/SELECT * FROM test_cases WHERE status = 'active' LIMIT 5?cache_key=active_cases"
+  url: "https://api.example.com/db_test"
+  method: "POST"
+  expected_result:
+    status_code: 200
+
+# 3. Redis数据源测试
+redis_data_source_test:
+  case_id: "REDIS_001"
+  description: "从Redis加载测试数据"
+  data_source: "redis"
+  redis_key: "test:user:123"
+  url: "https://api.example.com/redis_test"
+  method: "GET"
+  expected_result:
+    status_code: 200
+
+# 4. 混合数据源测试
+mixed_data_source_test:
+  case_id: "MIXED_001"
+  description: "混合数据源测试"
+  data_source: "mixed"
+  # 基础配置来自文件
+  base_config:
+    url: "https://api.example.com/mixed_test"
+    method: "POST"
+  # 动态数据来自数据库
+  dynamic_data_query: "db://mysql/test/SELECT user_id, username FROM users WHERE is_active = 1 LIMIT 3"
+  # 缓存配置来自Redis
+  cache_config_key: "test:cache:config"
+  expected_result:
+    status_code: 200
+
+# 5. 参数化测试配置
+parameterized_test_config:
+  case_id: "PARAM_001"
+  description: "参数化测试配置"
+  data_source: "database"
+  # 从数据库获取测试参数
+  parameter_query: "db://mysql/test/SELECT test_name, input_data, expected_result FROM test_scenarios WHERE category = 'api_test'"
+  url_template: "https://api.example.com/param_test/{test_name}"
+  method: "POST"
+  expected_result:
+    status_code: 200
+
+# 6. 动态SQL生成测试
+dynamic_sql_test:
+  case_id: "DYNAMIC_SQL_001"
+  description: "动态SQL生成测试"
+  data_source: "dynamic_sql"
+  # 从Redis获取查询条件
+  condition_key: "test:query:condition"
+  base_sql: "SELECT * FROM test_data"
+  limit: 10
+  url: "https://api.example.com/dynamic_test"
+  method: "GET"
+  expected_result:
+    status_code: 200
+
+# 7. 多环境数据源测试
+multi_env_test:
+  case_id: "MULTI_ENV_001"
+  description: "多环境数据源测试"
+  environments:
+    dev:
+      data_source: "db://mysql/dev/SELECT * FROM test_cases WHERE env = 'dev'"
+      url: "https://dev-api.example.com/test"
+    test:
+      data_source: "db://mysql/test/SELECT * FROM test_cases WHERE env = 'test'"
+      url: "https://test-api.example.com/test"
+    prod:
+      data_source: "db://mysql/prod/SELECT * FROM test_cases WHERE env = 'prod'"
+      url: "https://prod-api.example.com/test"
+  method: "POST"
+  expected_result:
+    status_code: 200
+
+# 8. 缓存策略测试
+cache_strategy_test:
+  case_id: "CACHE_001"
+  description: "缓存策略测试"
+  data_source: "database"
+  # 使用缓存的数据源
+  cached_query: "db://mysql/test/SELECT * FROM large_dataset WHERE category = 'performance'?cache_key=perf_data&ttl=3600"
+  url: "https://api.example.com/cache_test"
+  method: "GET"
+  cache_config:
+    enable_cache: true
+    cache_ttl: 3600
+    cache_key_prefix: "test:data:"
+  expected_result:
+    status_code: 200
+
+# 9. 错误处理测试
+error_handling_test:
+  case_id: "ERROR_001"
+  description: "数据源错误处理测试"
+  data_source: "database"
+  # 故意使用错误的数据库配置
+  invalid_query: "db://invalid_db/test/SELECT * FROM non_existent_table"
+  fallback_data_source: "file"
+  fallback_file: "caseparams/test_chat_gateway.yaml"
+  url: "https://api.example.com/error_test"
+  method: "POST"
+  expected_result:
+    status_code: 200
+    # 即使数据源失败，测试也应该继续
+    continue_on_error: true
+
+# 10. 性能测试配置
+performance_test:
+  case_id: "PERF_001"
+  description: "数据源性能测试"
+  data_source: "database"
+  # 大数据量查询
+  performance_query: "db://mysql/test/SELECT * FROM large_test_data LIMIT 1000?cache_key=perf_large_data"
+  url: "https://api.example.com/performance_test"
+  method: "POST"
+  performance_config:
+    timeout: 30
+    max_retries: 3
+    batch_size: 100
+  expected_result:
+    status_code: 200
+    response_time: "< 5s" 

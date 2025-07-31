@@ -15,6 +15,9 @@ except ImportError:
     YAML_AVAILABLE = False
     print("警告: PyYAML未安装，YAML文件将无法读取")
 
+# 导入数据源管理器
+from common.data_source import get_test_data_from_db, get_db_data
+
 def safe_yaml_load(file):
     """安全的YAML加载函数，处理Python版本兼容性问题"""
     if not YAML_AVAILABLE:
@@ -194,10 +197,14 @@ def get_available_test_files() -> List[str]:
 def read_test_data(file_path, encoding='utf-8'):
     """
     读取测试数据文件
-    :param file_path: 文件路径（相对于项目根目录或绝对路径）
+    :param file_path: 文件路径（相对于项目根目录或绝对路径）或数据库查询配置
     :param encoding: 文件编码
     :return: 数据列表
     """
+    # 检查是否是数据库查询配置
+    if file_path.startswith('db://'):
+        return _read_test_data_from_db(file_path)
+    
     # 解析文件路径
     resolved_path = resolve_file_path(file_path)
     
@@ -221,6 +228,46 @@ def read_test_data(file_path, encoding='utf-8'):
             raise ValueError(f"Unsupported file format: {ext}")
     except Exception as e:
         raise RuntimeError(f"Failed to read {resolved_path} with encoding {encoding}: {e}")
+
+def _read_test_data_from_db(db_config: str) -> List[Dict[str, Any]]:
+    """
+    从数据库读取测试数据
+    :param db_config: 数据库配置字符串，格式: db://db_type/env/sql?cache_key=xxx
+    :return: 数据列表
+    """
+    try:
+        # 解析数据库配置
+        # 格式: db://mysql/test/SELECT * FROM test_data?cache_key=test_data_cache
+        config_parts = db_config.replace('db://', '').split('/')
+        if len(config_parts) < 3:
+            raise ValueError("数据库配置格式错误，应为: db://db_type/env/sql")
+        
+        db_type = config_parts[0]
+        env = config_parts[1]
+        sql_part = '/'.join(config_parts[2:])
+        
+        # 分离SQL和查询参数
+        if '?' in sql_part:
+            sql, params_str = sql_part.split('?', 1)
+            # 解析查询参数
+            params = {}
+            for param in params_str.split('&'):
+                if '=' in param:
+                    key, value = param.split('=', 1)
+                    params[key] = value
+        else:
+            sql = sql_part
+            params = {}
+        
+        # 获取缓存键
+        cache_key = params.pop('cache_key', None)
+        
+        # 从数据库获取数据
+        return get_test_data_from_db(sql, db_type, env, cache_key)
+        
+    except Exception as e:
+        print(f"从数据库读取测试数据失败: {e}")
+        return []
 
 # 便捷函数
 def get_all_test_data() -> Dict[str, List[Dict[str, Any]]]:
