@@ -1,0 +1,80 @@
+# 接口基本信息配置
+interfaces:
+  # 用户相关接口
+  user:
+    login:
+      url: http://localhost:8080/api/login
+      method: POST
+      headers:
+        Content-Type: application/json
+      timeout: 30
+      description: 用户登录接口
+    
+    get_user_info:
+      url: http://localhost:8080/api/user/info
+      method: GET
+      headers:
+        Content-Type: application/json
+      timeout: 10
+      description: 获取用户信息接口
+    
+    update_user:
+      url: http://localhost:8080/api/user/update
+      method: PUT
+      headers:
+        Content-Type: application/json
+      timeout: 30
+      description: 更新用户信息接口
+  
+  # 订单相关接口
+  order:
+    create_order:
+      url: http://localhost:8080/api/order/create
+      method: POST
+      headers:
+        Content-Type: application/json
+      timeout: 60
+      description: 创建订单接口
+    
+    get_order_list:
+      url: http://localhost:8080/api/order/list
+      method: GET
+      headers:
+        Content-Type: application/json
+      timeout: 10
+      description: 获取订单列表接口
+    
+    get_order_detail:
+      url: http://localhost:8080/api/order/detail
+      method: GET
+      headers:
+        Content-Type: application/json
+      timeout: 10
+      description: 获取订单详情接口
+  
+  # 商品相关接口
+  product:
+    get_product_list:
+      url: http://localhost:8080/api/product/list
+      method: GET
+      headers:
+        Content-Type: application/json
+      timeout: 10
+      description: 获取商品列表接口
+    
+    get_product_detail:
+      url: http://localhost:8080/api/product/detail
+      method: GET
+      headers:
+        Content-Type: application/json
+      timeout: 10
+      description: 获取商品详情接口
+
+# 全局配置
+global:
+  default_timeout: 30
+  default_headers:
+    User-Agent: PythonProject/1.0
+    Accept: application/json
+  retry_times: 3
+  retry_interval: 1 

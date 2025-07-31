@@ -1,0 +1,4 @@
+case_id,description,url,method,params,expected_result
+1,测试GET请求,https://jsonplaceholder.typicode.com/posts/1,GET,"{}","{""id"": 1}"
+2,测试POST请求,https://jsonplaceholder.typicode.com/posts,POST,"{""title"": ""test"", ""body"": ""test body"", ""userId"": 1}","{""id"": 101}"
+3,测试带参数GET,https://jsonplaceholder.typicode.com/posts/1,GET,"{}","{""userId"": 1}" 

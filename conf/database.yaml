@@ -1,0 +1,82 @@
+# 数据库连接配置
+database:
+  # 默认数据库类型
+  default_type: mysql
+  
+  # MySQL数据库配置
+  mysql:
+    dev:
+      host: 127.0.0.1
+      port: 3306
+      user: dev_user
+      password: dev_pass
+      database: dev_db
+      charset: utf8mb4
+      autocommit: true
+    test:
+      host: 192.168.1.100
+      port: 3306
+      user: test_user
+      password: test_pass
+      database: test_db
+      charset: utf8mb4
+      autocommit: true
+    prod:
+      host: prod-mysql.example.com
+      port: 3306
+      user: prod_user
+      password: prod_pass
+      database: prod_db
+      charset: utf8mb4
+      autocommit: true
+  
+  # PostgreSQL数据库配置
+  postgresql:
+    dev:
+      host: 127.0.0.1
+      port: 5432
+      user: dev_user
+      password: dev_pass
+      database: dev_db
+      autocommit: true
+    test:
+      host: 192.168.1.100
+      port: 5432
+      user: test_user
+      password: test_pass
+      database: test_db
+      autocommit: true
+    prod:
+      host: prod-postgres.example.com
+      port: 5432
+      user: prod_user
+      password: prod_pass
+      database: prod_db
+      autocommit: true
+  
+  # Redis数据库配置
+  redis:
+    dev:
+      host: 127.0.0.1
+      port: 6379
+      password: null
+      db: 0
+    test:
+      host: 192.168.1.100
+      port: 6379
+      password: test_redis_pass
+      db: 1
+    prod:
+      host: prod-redis.example.com
+      port: 6379
+      password: prod_redis_pass
+      db: 0
+  
+  # SQLite数据库配置
+  sqlite:
+    dev:
+      database: dev.db
+    test:
+      database: test.db
+    prod:
+      database: prod.db 

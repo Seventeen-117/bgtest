@@ -1,0 +1,206 @@
+mq:
+  # 默认MQ类型
+  default_type: rabbitmq
+  
+  # RabbitMQ配置
+  rabbitmq:
+    dev:
+      host: localhost
+      port: 5672
+      username: guest
+      password: guest
+      virtual_host: /
+      connection_timeout: 30
+      heartbeat_interval: 600
+      # 交换机配置
+      exchanges:
+        test_exchange:
+          name: test_exchange
+          type: direct
+          durable: true
+          auto_delete: false
+        fanout_exchange:
+          name: fanout_exchange
+          type: fanout
+          durable: true
+          auto_delete: false
+        topic_exchange:
+          name: topic_exchange
+          type: topic
+          durable: true
+          auto_delete: false
+      # 队列配置
+      queues:
+        test_queue:
+          name: test_queue
+          durable: true
+          auto_delete: false
+          arguments: {}
+        fanout_queue1:
+          name: fanout_queue1
+          durable: true
+          auto_delete: false
+          arguments: {}
+        fanout_queue2:
+          name: fanout_queue2
+          durable: true
+          auto_delete: false
+          arguments: {}
+        topic_queue:
+          name: topic_queue
+          durable: true
+          auto_delete: false
+          arguments: {}
+      # 绑定关系
+      bindings:
+        test_binding:
+          exchange: test_exchange
+          queue: test_queue
+          routing_key: test_key
+        fanout_binding1:
+          exchange: fanout_exchange
+          queue: fanout_queue1
+          routing_key: ""
+        fanout_binding2:
+          exchange: fanout_exchange
+          queue: fanout_queue2
+          routing_key: ""
+        topic_binding:
+          exchange: topic_exchange
+          queue: topic_queue
+          routing_key: "test.*"
+    
+    test:
+      host: test-rabbitmq
+      port: 5672
+      username: test_user
+      password: test_pass
+      virtual_host: /test
+      connection_timeout: 30
+      heartbeat_interval: 600
+      exchanges:
+        test_exchange:
+          name: test_exchange
+          type: direct
+          durable: true
+          auto_delete: false
+      queues:
+        test_queue:
+          name: test_queue
+          durable: true
+          auto_delete: false
+          arguments: {}
+      bindings:
+        test_binding:
+          exchange: test_exchange
+          queue: test_queue
+          routing_key: test_key
+    
+    prod:
+      host: prod-rabbitmq
+      port: 5672
+      username: prod_user
+      password: prod_pass
+      virtual_host: /prod
+      connection_timeout: 30
+      heartbeat_interval: 600
+      exchanges:
+        prod_exchange:
+          name: prod_exchange
+          type: direct
+          durable: true
+          auto_delete: false
+      queues:
+        prod_queue:
+          name: prod_queue
+          durable: true
+          auto_delete: false
+          arguments: {}
+      bindings:
+        prod_binding:
+          exchange: prod_exchange
+          queue: prod_queue
+          routing_key: prod_key
+  
+  # RocketMQ配置
+  rocketmq:
+    dev:
+      name_server: localhost:9876
+      producer_group: test_producer_group
+      consumer_group: test_consumer_group
+      # 生产者配置
+      producer:
+        send_msg_timeout: 3000
+        retry_times_when_send_failed: 2
+        retry_times_when_send_async_failed: 2
+        max_message_size: 4194304
+        compress_msg_body_over_howmuch: 4096
+        retry_another_broker_when_not_store_ok: false
+      # 消费者配置
+      consumer:
+        pull_batch_size: 32
+        pull_interval: 0
+        consume_message_batch_max_size: 1
+        pull_time_delay_mills_when_exception: 1000
+        # 订阅主题
+        topics:
+          test_topic:
+            name: test_topic
+            tags: ["test_tag"]
+            sub_expression: "*"
+          order_topic:
+            name: order_topic
+            tags: ["order_tag", "payment_tag"]
+            sub_expression: "*"
+          user_topic:
+            name: user_topic
+            tags: ["user_tag", "profile_tag"]
+            sub_expression: "*"
+    
+    test:
+      name_server: test-rocketmq:9876
+      producer_group: test_producer_group
+      consumer_group: test_consumer_group
+      producer:
+        send_msg_timeout: 3000
+        retry_times_when_send_failed: 2
+        retry_times_when_send_async_failed: 2
+        max_message_size: 4194304
+        compress_msg_body_over_howmuch: 4096
+        retry_another_broker_when_not_store_ok: false
+      consumer:
+        pull_batch_size: 32
+        pull_interval: 0
+        consume_message_batch_max_size: 1
+        pull_time_delay_mills_when_exception: 1000
+        topics:
+          test_topic:
+            name: test_topic
+            tags: ["test_tag"]
+            sub_expression: "*"
+    
+    prod:
+      name_server: prod-rocketmq:9876
+      producer_group: prod_producer_group
+      consumer_group: prod_consumer_group
+      producer:
+        send_msg_timeout: 5000
+        retry_times_when_send_failed: 3
+        retry_times_when_send_async_failed: 3
+        max_message_size: 4194304
+        compress_msg_body_over_howmuch: 4096
+        retry_another_broker_when_not_store_ok: false
+      consumer:
+        pull_batch_size: 32
+        pull_interval: 0
+        consume_message_batch_max_size: 1
+        pull_time_delay_mills_when_exception: 1000
+        topics:
+          order_topic:
+            name: order_topic
+            tags: ["order_tag", "payment_tag"]
+            sub_expression: "*"
+          user_topic:
+            name: user_topic
+            tags: ["user_tag", "profile_tag"]
+            sub_expression: "*" 

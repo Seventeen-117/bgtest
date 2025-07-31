@@ -1,0 +1,24 @@
+{
+  "user": {
+    "id": 1,
+    "name": "张三",
+    "profile": {
+      "age": 25,
+      "email": "zhangsan@example.com",
+      "addresses": [
+        {
+          "type": "home",
+          "city": "北京"
+        },
+        {
+          "type": "work",
+          "city": "上海"
+        }
+      ]
+    }
+  },
+  "settings": {
+    "theme": "dark",
+    "language": "zh-CN"
+  }
+}
