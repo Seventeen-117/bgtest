@@ -31,6 +31,16 @@ def test_case(title: str, description: str = ""):
     return decorator
 
 
+# 为了避免pytest误认为是fixture，添加一个别名
+def allure_test_case_decorator(title: str, description: str = ""):
+    """
+    测试用例装饰器（别名）
+    :param title: 测试标题
+    :param description: 测试描述
+    """
+    return test_case(title, description)
+
+
 def api_test(api_name: str, method: str, url: str):
     """
     API测试装饰器
@@ -46,6 +56,17 @@ def api_test(api_name: str, method: str, url: str):
     return decorator
 
 
+# 为了避免pytest误认为是fixture，添加一个别名
+def allure_api_test_decorator(api_name: str, method: str, url: str):
+    """
+    API测试装饰器（别名）
+    :param api_name: API名称
+    :param method: 请求方法
+    :param url: 请求URL
+    """
+    return api_test(api_name, method, url)
+
+
 def data_driven_test(data_source: str, data_type: str = "file"):
     """
     数据驱动测试装饰器
@@ -58,6 +79,16 @@ def data_driven_test(data_source: str, data_type: str = "file"):
             return func(*args, **kwargs)
         return allure_data_driven_test(data_source, data_type)(wrapper)
     return decorator
+
+
+# 为了避免pytest误认为是fixture，添加一个别名
+def allure_data_driven_test_decorator(data_source: str, data_type: str = "file"):
+    """
+    数据驱动测试装饰器（别名）
+    :param data_source: 数据源
+    :param data_type: 数据类型
+    """
+    return data_driven_test(data_source, data_type)
 
 
 def performance_test_decorator(threshold_ms: float = 1000.0):

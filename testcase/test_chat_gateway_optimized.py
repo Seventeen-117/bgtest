@@ -13,7 +13,7 @@ from common.test_utils import (
     parse_json_safely, test_utils
 )
 from utils.test_decorators import (
-    test_case, api_test, data_driven_test, smoke_test,
+    allure_test_case_decorator, allure_api_test_decorator, allure_data_driven_test_decorator, smoke_test,
     allure_feature_story, allure_severity, log_test_info
 )
 
@@ -23,9 +23,9 @@ test_data = load_test_data('caseparams/test_chat_gateway.yaml')
 @pytest.mark.parametrize("case", test_data)
 @allure.feature("聊天网关")
 @allure.story("API测试")
-@test_case("聊天网关API测试", "测试聊天网关的各种API接口")
-@api_test("聊天网关", "POST", "https://api.example.com/chat")
-@data_driven_test("test_chat_gateway.yaml", "yaml")
+@allure_test_case_decorator("聊天网关API测试", "测试聊天网关的各种API接口")
+@allure_api_test_decorator("聊天网关", "POST", "https://api.example.com/chat")
+@allure_data_driven_test_decorator("test_chat_gateway.yaml", "yaml")
 @smoke_test
 @allure_severity("critical")
 @log_test_info
@@ -45,7 +45,7 @@ def test_chat_gateway_optimized(case):
 @pytest.mark.parametrize("case", test_data)
 @allure.feature("聊天网关")
 @allure.story("基础功能测试")
-@test_case("聊天网关基础功能", "测试聊天网关的基础功能")
+@allure_test_case_decorator("聊天网关基础功能", "测试聊天网关的基础功能")
 @smoke_test
 @allure_severity("normal")
 def test_chat_gateway_basic(case):
@@ -74,7 +74,7 @@ def test_chat_gateway_basic(case):
 @pytest.mark.parametrize("case", test_data)
 @allure.feature("聊天网关")
 @allure.story("性能测试")
-@test_case("聊天网关性能测试", "测试聊天网关的性能表现")
+@allure_test_case_decorator("聊天网关性能测试", "测试聊天网关的性能表现")
 @allure_severity("minor")
 def test_chat_gateway_performance(case):
     """聊天网关性能测试"""
@@ -112,7 +112,7 @@ class TestChatGatewayAdvanced:
         info("完成聊天网关高级测试")
     
     @allure_feature_story("聊天网关", "高级功能")
-    @test_case("聊天网关高级功能", "测试聊天网关的高级功能")
+    @allure_test_case_decorator("聊天网关高级功能", "测试聊天网关的高级功能")
     @allure_severity("critical")
     def test_chat_gateway_advanced_features(self):
         """测试聊天网关高级功能"""
@@ -127,7 +127,7 @@ class TestChatGatewayAdvanced:
             assert success, f"高级功能测试失败: {case.get('case_id', 'Unknown')}"
     
     @allure_feature_story("聊天网关", "错误处理")
-    @test_case("聊天网关错误处理", "测试聊天网关的错误处理能力")
+    @allure_test_case_decorator("聊天网关错误处理", "测试聊天网关的错误处理能力")
     @allure_severity("normal")
     def test_chat_gateway_error_handling(self):
         """测试聊天网关错误处理"""
@@ -163,7 +163,7 @@ class TestChatGatewayAdvanced:
                 error(f"错误处理测试捕获异常: {e}")
     
     @allure_feature_story("聊天网关", "数据验证")
-    @test_case("聊天网关数据验证", "测试聊天网关的数据验证功能")
+    @allure_test_case_decorator("聊天网关数据验证", "测试聊天网关的数据验证功能")
     @allure_severity("normal")
     def test_chat_gateway_data_validation(self):
         """测试聊天网关数据验证"""

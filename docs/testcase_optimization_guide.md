@@ -47,7 +47,7 @@ success = test_utils.execute_test_case(case_data, use_allure=True)
 ### 2. 创建测试装饰器工具类 (`utils/test_decorators.py`)
 
 #### 主要装饰器
-- **基础装饰器**: `test_case()`, `api_test()`, `data_driven_test()`
+- **基础装饰器**: `allure_test_case_decorator()`, `allure_api_test_decorator()`, `allure_data_driven_test_decorator()`
 - **Allure装饰器**: `allure_feature_story()`, `allure_severity()`, `allure_description()`
 - **功能装饰器**: `retry_on_failure()`, `timeout()`, `log_test_info()`
 - **标记装饰器**: `smoke_test`, `regression_test`, `api_test_mark`
@@ -55,13 +55,13 @@ success = test_utils.execute_test_case(case_data, use_allure=True)
 #### 使用示例
 ```python
 from utils.test_decorators import (
-    test_case, api_test, data_driven_test, smoke_test,
+    allure_test_case_decorator, allure_api_test_decorator, allure_data_driven_test_decorator, smoke_test,
     allure_feature_story, allure_severity, log_test_info
 )
 
-@test_case("测试标题", "测试描述")
-@api_test("API名称", "POST", "/api/endpoint")
-@data_driven_test("test_data.yaml", "yaml")
+@allure_test_case_decorator("测试标题", "测试描述")
+@allure_api_test_decorator("API名称", "POST", "/api/endpoint")
+@allure_data_driven_test_decorator("test_data.yaml", "yaml")
 @smoke_test
 @allure_feature_story("功能模块", "具体功能")
 @allure_severity("critical")
@@ -123,16 +123,16 @@ from common.test_utils import (
     test_utils
 )
 from utils.test_decorators import (
-    test_case, api_test, data_driven_test, smoke_test
+    allure_test_case_decorator, allure_api_test_decorator, allure_data_driven_test_decorator, smoke_test
 )
 
 # 加载测试数据
 test_data = load_test_data('caseparams/test_chat_gateway.yaml')
 
 @pytest.mark.parametrize("case", test_data)
-@test_case("聊天网关API测试", "测试聊天网关的各种API接口")
-@api_test("聊天网关", "POST", "https://api.example.com/chat")
-@data_driven_test("test_chat_gateway.yaml", "yaml")
+@allure_test_case_decorator("聊天网关API测试", "测试聊天网关的各种API接口")
+@allure_api_test_decorator("聊天网关", "POST", "https://api.example.com/chat")
+@allure_data_driven_test_decorator("test_chat_gateway.yaml", "yaml")
 @smoke_test
 def test_chat_gateway_optimized(case):
     """优化后的聊天网关测试用例"""
@@ -155,6 +155,7 @@ def test_chat_gateway_optimized(case):
 2. **维护困难**: 统一了测试用例的编写风格，提高了维护性
 3. **功能分散**: 将常用功能集中到公共模块中
 4. **装饰器混乱**: 统一了装饰器的使用方式
+5. **pytest fixture冲突**: 通过重命名装饰器避免了pytest的自动发现冲突
 
 ### ✅ 新增功能
 
@@ -181,7 +182,7 @@ from common.test_utils import (
     parse_json_safely, test_utils
 )
 from utils.test_decorators import (
-    test_case, api_test, data_driven_test, smoke_test
+    allure_test_case_decorator, allure_api_test_decorator, allure_data_driven_test_decorator, smoke_test
 )
 
 # 加载测试数据
@@ -189,7 +190,7 @@ test_data = load_test_data('caseparams/test_data.yaml')
 
 # 编写测试用例
 @pytest.mark.parametrize("case", test_data)
-@test_case("测试标题", "测试描述")
+@allure_test_case_decorator("测试标题", "测试描述")
 @smoke_test
 def test_function(case):
     # 执行测试用例
@@ -222,9 +223,9 @@ test_utils.validate_response_contains(response, "success")
 ### 3. 装饰器组合
 
 ```python
-@test_case("完整测试", "使用多种装饰器")
-@api_test("用户API", "POST", "/api/user")
-@data_driven_test("user_data.yaml", "yaml")
+@allure_test_case_decorator("完整测试", "使用多种装饰器")
+@allure_api_test_decorator("用户API", "POST", "/api/user")
+@allure_data_driven_test_decorator("user_data.yaml", "yaml")
 @smoke_test
 @allure_feature_story("用户管理", "用户注册")
 @allure_severity("critical")
@@ -282,6 +283,22 @@ response = execute_http_request(url, method, params, use_allure=True)
 response = execute_http_request(url, method, params, use_allure=False)
 ```
 
+### 4. pytest兼容性
+
+为了避免pytest的自动发现机制误将装饰器识别为fixture，我们使用了以下策略：
+
+```python
+# 原始装饰器（可能被pytest误识别）
+def test_case(title: str, description: str = ""):
+    """测试用例装饰器"""
+    # ... 实现
+
+# 重命名的装饰器（避免pytest误识别）
+def allure_test_case_decorator(title: str, description: str = ""):
+    """测试用例装饰器（别名）"""
+    return test_case(title, description)
+```
+
 ## 🎉 总结
 
 通过这次优化，`testcase` 目录下的测试用例实现了：
@@ -291,5 +308,6 @@ response = execute_http_request(url, method, params, use_allure=False)
 3. **✅ 功能增强**: 提供更多实用的测试功能
 4. **✅ 维护便利**: 集中管理，便于维护和更新
 5. **✅ 使用简单**: 提供便捷函数，简化使用
+6. **✅ pytest兼容**: 解决了装饰器与pytest fixture的冲突问题
 
 现在测试用例的编写更加简洁、统一和高效！ 
