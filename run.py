@@ -4,19 +4,10 @@ import pytest
 import os
 import sys
 
-def check_python_version():
-    """检查Python版本是否为3.8.10"""
-    if sys.version_info < (3, 8) or sys.version_info >= (3, 9):
-        print("错误: 此项目需要Python 3.8.x版本")
-        print(f"当前Python版本: {sys.version}")
-        print("请安装Python 3.8.10并重新运行")
-        sys.exit(1)
-    
-    print(f"Python版本检查通过: {sys.version}")
+
 
 if __name__ == "__main__":
-    # 检查Python版本
-    check_python_version()
+
     
     # 确保report目录存在
     report_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'report')

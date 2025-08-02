@@ -1,6 +1,8 @@
 ﻿# 娴嬭瘯妗嗘灦
 pytest>=7.0.0,<8.0.0
 pytest-html>=3.0.0,<4.0.0
+allure-pytest>=2.13.0,<3.0.0
+allure-commandline>=2.20.0,<3.0.0
 
 # HTTP璇锋眰搴?
 requests>=2.28.0,<3.0.0

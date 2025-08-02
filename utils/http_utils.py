@@ -63,13 +63,15 @@ class HTTPUtils:
         """
         execution_time = (time.time() - start_time) * 1000
         
+        # 安全处理response.content，避免NoneType错误
+        response_size = len(response.content) if response.content is not None else 0
         response_info = {
             "timestamp": time.time(),
             "method": method.upper(),
             "url": url,
             "status_code": response.status_code,
             "execution_time_ms": round(execution_time, 2),
-            "response_size": len(response.content),
+            "response_size": response_size,
             "status": "success" if success else "error"
         }
         
@@ -90,6 +92,10 @@ class HTTPUtils:
         # 构建完整URL
         if not url.startswith(('http://', 'https://')):
             url = f"{self.base_url}/{url.lstrip('/')}"
+        
+        # 处理json_data参数，转换为json参数
+        if 'json_data' in kwargs:
+            kwargs['json'] = kwargs.pop('json_data')
         
         # 准备请求头
         headers = self._prepare_headers(

@@ -6,19 +6,19 @@ database:
   # MySQL数据库配置
   mysql:
     dev:
-      host: 127.0.0.1
+      host: 8.133.246.113
       port: 3306
-      user: dev_user
-      password: dev_pass
-      database: dev_db
+      user: bgtech
+      password: Zly689258..
+      database: bgpay
       charset: utf8mb4
       autocommit: true
     test:
-      host: 192.168.1.100
+      host: 8.133.246.113
       port: 3306
-      user: test_user
-      password: test_pass
-      database: test_db
+      user: bgtech
+      password: Zly689258..
+      database: bgpay
       charset: utf8mb4
       autocommit: true
     prod:
@@ -33,18 +33,18 @@ database:
   # PostgreSQL数据库配置
   postgresql:
     dev:
-      host: 127.0.0.1
+      host: 8.133.246.113
       port: 5432
-      user: dev_user
-      password: dev_pass
-      database: dev_db
+      user: postgres
+      password: Postgres@123456
+      database: jiangyangpay
       autocommit: true
     test:
-      host: 192.168.1.100
+      host: 8.133.246.113
       port: 5432
-      user: test_user
-      password: test_pass
-      database: test_db
+      user: postgres
+      password: Postgres@123456
+      database: jiangyangpay
       autocommit: true
     prod:
       host: prod-postgres.example.com
@@ -57,14 +57,14 @@ database:
   # Redis数据库配置
   redis:
     dev:
-      host: 127.0.0.1
+      host: 8.133.246.113
       port: 6379
-      password: null
+      password: 5z25u2sk
       db: 0
     test:
-      host: 192.168.1.100
+      host: 8.133.246.113
       port: 6379
-      password: test_redis_pass
+      password: 5z25u2sk
       db: 1
     prod:
       host: prod-redis.example.com
