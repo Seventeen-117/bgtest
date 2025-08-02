@@ -1,0 +1,3 @@
+API: 模拟API测试
+方法: GET
+URL: /api/test

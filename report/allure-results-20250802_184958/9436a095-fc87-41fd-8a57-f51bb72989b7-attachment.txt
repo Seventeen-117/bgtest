@@ -1,0 +1,5 @@
+[32mINFO    [0m project_logger:log.py:46 开始测试: TestAssertionUtils.test_assertion_utils_regex_match
+[32mINFO    [0m api_monitor_logger:log.py:57 断言通过: 文本匹配正则 World \d+
+[32mINFO    [0m api_monitor_logger:log.py:57 断言通过: 文本匹配正则 ^Hello
+[1m[31mERROR   [0m api_monitor_logger:log.py:61 断言失败: 文本不匹配正则 ^Failure
+[32mINFO    [0m project_logger:log.py:46 测试完成: TestAssertionUtils.test_assertion_utils_regex_match, 耗时: 0.00秒

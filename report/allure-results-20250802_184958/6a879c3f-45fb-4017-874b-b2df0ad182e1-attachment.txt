@@ -1,0 +1,14 @@
+[32mINFO    [0m project_logger:log.py:46 开始测试: Unknown.test_http_data_file
+[32mINFO    [0m project_logger:log.py:46 HTTP数据测试 - 用例: 1 - 测试GET请求
+[32mINFO    [0m api_monitor_logger:log.py:57 HTTP请求开始: {"timestamp": 1754131835.4915216, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "params": {}, "json_data": {}, "headers": {}}
+[32mINFO    [0m api_monitor_logger:log.py:57 HTTP请求成功: {"timestamp": 1754131836.0932803, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "status_code": 200, "execution_time_ms": 601.76, "response_size": 292, "status": "success"}
+[32mINFO    [0m project_logger:log.py:46 接口返回: {'userId': 1, 'id': 1, 'title': 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'body': 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'}
+[32mINFO    [0m project_logger:log.py:46 HTTP数据测试 - 用例: 2 - 测试POST请求
+[32mINFO    [0m api_monitor_logger:log.py:57 HTTP请求开始: {"timestamp": 1754131836.0945866, "method": "POST", "url": "https://jsonplaceholder.typicode.com/posts", "params": {}, "json_data": {"title": "test", "body": "test body", "userId": 1}, "headers": {}}
+[32mINFO    [0m api_monitor_logger:log.py:57 HTTP请求成功: {"timestamp": 1754131837.2036104, "method": "POST", "url": "https://jsonplaceholder.typicode.com/posts", "status_code": 201, "execution_time_ms": 1109.02, "response_size": 72, "status": "success"}
+[32mINFO    [0m project_logger:log.py:46 接口返回: {'title': 'test', 'body': 'test body', 'userId': 1, 'id': 101}
+[32mINFO    [0m project_logger:log.py:46 HTTP数据测试 - 用例: 3 - 测试带参数GET
+[32mINFO    [0m api_monitor_logger:log.py:57 HTTP请求开始: {"timestamp": 1754131837.2049484, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "params": {}, "json_data": {}, "headers": {}}
+[32mINFO    [0m api_monitor_logger:log.py:57 HTTP请求成功: {"timestamp": 1754131838.198568, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "status_code": 200, "execution_time_ms": 993.62, "response_size": 292, "status": "success"}
+[32mINFO    [0m project_logger:log.py:46 接口返回: {'userId': 1, 'id': 1, 'title': 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'body': 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'}
+[32mINFO    [0m project_logger:log.py:46 测试完成: Unknown.test_http_data_file, 耗时: 2.71秒

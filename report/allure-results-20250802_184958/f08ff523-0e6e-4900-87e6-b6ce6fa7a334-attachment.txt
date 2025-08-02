@@ -1,0 +1,2 @@
+[32mINFO    [0m project_logger:log.py:46 开始测试: TestAllureBasic.test_data_driven_mock
+[32mINFO    [0m project_logger:log.py:46 测试完成: TestAllureBasic.test_data_driven_mock, 耗时: 0.01秒

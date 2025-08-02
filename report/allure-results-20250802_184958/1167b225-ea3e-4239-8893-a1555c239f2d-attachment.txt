@@ -1,0 +1,2 @@
+[32mINFO    [0m project_logger:log.py:46 开始测试: TestAllureWithDecorators.test_security
+[32mINFO    [0m project_logger:log.py:46 测试完成: TestAllureWithDecorators.test_security, 耗时: 0.00秒

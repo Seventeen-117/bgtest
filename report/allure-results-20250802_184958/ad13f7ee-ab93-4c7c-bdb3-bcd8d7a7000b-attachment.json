@@ -1,0 +1,5 @@
+{
+  "test_type": "authentication",
+  "security_level": "high",
+  "vulnerabilities_found": 0
+}

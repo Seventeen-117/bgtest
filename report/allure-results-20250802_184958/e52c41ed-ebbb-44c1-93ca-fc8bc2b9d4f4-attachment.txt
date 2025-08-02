@@ -1,0 +1,5 @@
+[32mINFO    [0m project_logger:log.py:46 开始测试: TestChatGatewayWithDynamicData.test_data_source_cleanup
+[1m[31mERROR   [0m project_logger:log.py:49 pymysql未安装，请运行: pip install pymysql
+[32mINFO    [0m project_logger:log.py:46 聊天测试用例总数: []
+[32mINFO    [0m project_logger:log.py:46 数据源连接已清理
+[32mINFO    [0m project_logger:log.py:46 测试完成: TestChatGatewayWithDynamicData.test_data_source_cleanup, 耗时: 0.00秒
