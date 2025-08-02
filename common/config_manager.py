@@ -16,8 +16,8 @@ except ImportError:
     YAML_AVAILABLE = False
     print("警告: PyYAML未安装，YAML文件将无法读取")
 
-# 导入数据源管理器
-from common.data_source import get_test_data_from_db, get_db_data
+# 导入数据源管理器 - 延迟导入以避免循环导入
+# from common.data_source import get_test_data_from_db, get_db_data
 from common.log import info, error, api_info, api_error
 
 class ConfigManager:
@@ -413,6 +413,9 @@ class ConfigManager:
     def _read_test_data_from_db(self, db_config: str) -> List[Dict[str, Any]]:
         """从数据库读取测试数据"""
         try:
+            # 延迟导入以避免循环导入
+            from common.data_source import get_test_data_from_db
+            
             config_parts = db_config.replace('db://', '').split('/')
             if len(config_parts) < 3:
                 raise ValueError("数据库配置格式错误，应为: db://db_type/env/sql")

@@ -8,7 +8,13 @@ from typing import Dict, Any, Optional, Union
 from allure_commons.types import AttachmentType
 from functools import wraps
 import requests
-from common.log import info, error, debug
+try:
+    from common.log import info, error, debug
+except ImportError:
+    # 当直接运行此文件时，使用简单的日志函数
+    def info(msg): print(f"[INFO] {msg}")
+    def error(msg): print(f"[ERROR] {msg}")
+    def debug(msg): print(f"[DEBUG] {msg}")
 
 class AllureUtils:
     """Allure报告增强工具类"""

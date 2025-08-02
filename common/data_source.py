@@ -4,7 +4,7 @@ import os
 import sys
 import importlib
 from typing import Dict, Any, List, Optional, Union
-from common.config import get_config
+from common.config_manager import config_manager, get_env_config, get_interface_config
 from common.log import info, error, debug
 
 class DataSourceManager:
@@ -13,7 +13,7 @@ class DataSourceManager:
     def __init__(self):
         self._connections = {}
         self._data_cache = {}
-        self._db_config = get_config('database')
+        self._config_manager = config_manager
         
     def get_database_config(self, db_type: str = None, env: str = 'test') -> Dict[str, Any]:
         """
@@ -22,21 +22,27 @@ class DataSourceManager:
         :param env: 环境 (dev, test, prod)
         :return: 数据库配置字典
         """
-        if not self._db_config:
-            error("数据库配置未找到")
+        try:
+            # 使用config_manager获取环境配置
+            env_config = self._config_manager.get_env_config(env)
+            db_config = env_config.get('db', {})
+            
+            if not db_config:
+                error(f"未找到环境 {env} 的数据库配置")
+                return {}
+                
+            if db_type is None:
+                db_type = db_config.get('default_type', 'mysql')
+                
+            if db_type not in db_config:
+                error(f"未找到数据库类型 {db_type} 的配置")
+                return {}
+                
+            return db_config[db_type]
+            
+        except Exception as e:
+            error(f"获取数据库配置失败: {e}")
             return {}
-            
-        if db_type is None:
-            db_type = self._db_config.get('default_type', 'mysql')
-            
-        db_config = self._db_config.get(db_type, {})
-        env_config = db_config.get(env, {})
-        
-        if not env_config:
-            error(f"未找到数据库配置: {db_type}.{env}")
-            return {}
-            
-        return env_config
     
     def get_connection(self, db_type: str = None, env: str = 'test'):
         """
@@ -139,8 +145,8 @@ class DataSourceManager:
             import sqlite3
             db_path = config['database']
             if not os.path.isabs(db_path):
-                # 相对于项目根目录
-                project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                # 使用config_manager的项目根目录
+                project_root = self._config_manager.get_project_root()
                 db_path = os.path.join(project_root, db_path)
             return sqlite3.connect(db_path)
         except Exception as e:
@@ -267,6 +273,77 @@ class DataSourceManager:
             
         return data
     
+    def load_test_data_from_file(self, file_path: str, encoding: str = 'utf-8') -> List[Dict[str, Any]]:
+        """
+        从文件加载测试数据
+        :param file_path: 文件路径
+        :param encoding: 文件编码
+        :return: 测试数据列表
+        """
+        try:
+            # 使用config_manager的read_test_data方法
+            return self._config_manager.read_test_data(file_path, encoding)
+        except Exception as e:
+            error(f"从文件加载测试数据失败: {e}")
+            return []
+    
+    def load_all_test_data(self) -> Dict[str, List[Dict[str, Any]]]:
+        """
+        加载所有测试数据
+        :return: 测试数据字典
+        """
+        try:
+            # 使用config_manager的load_all_caseparams_files方法
+            return self._config_manager.load_all_caseparams_files()
+        except Exception as e:
+            error(f"加载所有测试数据失败: {e}")
+            return {}
+    
+    def get_available_test_files(self) -> List[str]:
+        """
+        获取可用的测试文件列表
+        :return: 文件路径列表
+        """
+        try:
+            # 使用config_manager的get_available_test_files方法
+            return self._config_manager.get_available_test_files()
+        except Exception as e:
+            error(f"获取可用测试文件失败: {e}")
+            return []
+    
+    def get_current_env(self) -> str:
+        """
+        获取当前环境
+        :return: 当前环境名称
+        """
+        return self._config_manager.get_current_env()
+    
+    def get_api_base_url(self, env: str = None) -> str:
+        """
+        获取API基础URL
+        :param env: 环境名称
+        :return: API基础URL
+        """
+        try:
+            return self._config_manager.get_api_base_url(env)
+        except Exception as e:
+            error(f"获取API基础URL失败: {e}")
+            return ""
+    
+    def get_interface_info(self, module: str, interface: str, env: str = None) -> Dict[str, Any]:
+        """
+        获取接口信息
+        :param module: 模块名
+        :param interface: 接口名
+        :param env: 环境
+        :return: 接口信息字典
+        """
+        try:
+            return self._config_manager.get_interface_info(module, interface, env)
+        except Exception as e:
+            error(f"获取接口信息失败: {e}")
+            return {}
+    
     def close_all_connections(self):
         """关闭所有数据库连接"""
         for key, conn in self._connections.items():
@@ -296,6 +373,18 @@ def get_test_data_from_db(sql: str, db_type: str = None, env: str = 'test',
     """
     return data_source_manager.load_test_data_from_db(sql, db_type, env, cache_key)
 
+def get_test_data_from_file(file_path: str, encoding: str = 'utf-8') -> List[Dict[str, Any]]:
+    """
+    从文件获取测试数据的便捷函数
+    """
+    return data_source_manager.load_test_data_from_file(file_path, encoding)
+
+def get_all_test_data() -> Dict[str, List[Dict[str, Any]]]:
+    """
+    获取所有测试数据的便捷函数
+    """
+    return data_source_manager.load_all_test_data()
+
 def get_redis_value(key: str, env: str = 'test') -> Any:
     """
     获取Redis值的便捷函数
@@ -306,4 +395,22 @@ def set_redis_value(key: str, value: Any, env: str = 'test', expire: int = None)
     """
     设置Redis值的便捷函数
     """
-    return data_source_manager.set_redis_data(key, value, env, expire) 
+    return data_source_manager.set_redis_data(key, value, env, expire)
+
+def get_current_env() -> str:
+    """
+    获取当前环境的便捷函数
+    """
+    return data_source_manager.get_current_env()
+
+def get_api_base_url(env: str = None) -> str:
+    """
+    获取API基础URL的便捷函数
+    """
+    return data_source_manager.get_api_base_url(env)
+
+def get_interface_info(module: str, interface: str, env: str = None) -> Dict[str, Any]:
+    """
+    获取接口信息的便捷函数
+    """
+    return data_source_manager.get_interface_info(module, interface, env) 

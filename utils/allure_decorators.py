@@ -7,7 +7,11 @@ import time
 import allure
 from functools import wraps
 from typing import Dict, Any
-from .allure_utils import AllureUtils
+try:
+    from .allure_utils import AllureUtils
+except ImportError:
+    # 当直接运行此文件时，使用绝对导入
+    from allure_utils import AllureUtils
 
 
 def allure_test_case(title: str, description: str = ""):
@@ -134,4 +138,4 @@ def security_test(security_level: str = "medium"):
                     AllureUtils.attach_exception(e, f"安全测试异常: {func.__name__}")
                     raise
         return wrapper
-    return decorator 
+    return decorator
