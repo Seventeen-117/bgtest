@@ -1,0 +1,11 @@
+{
+  "method": "POST",
+  "url": "http://localhost:8688/api/chatGatWay-internal",
+  "headers": {},
+  "params": {},
+  "data": {},
+  "json_data": {
+    "message": "What is the capital of France?",
+    "user_id": "user003"
+  }
+}

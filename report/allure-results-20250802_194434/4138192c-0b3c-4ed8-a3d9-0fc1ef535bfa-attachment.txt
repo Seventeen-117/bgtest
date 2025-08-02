@@ -1,0 +1,2 @@
+INFO     project_logger:log.py:46 开始测试: TestAllureSimple.test_basic_allure_features
+INFO     project_logger:log.py:46 测试完成: TestAllureSimple.test_basic_allure_features, 耗时: 0.01秒

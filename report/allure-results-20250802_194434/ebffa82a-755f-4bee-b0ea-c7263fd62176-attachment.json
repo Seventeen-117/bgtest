@@ -1,0 +1,9 @@
+{
+  "status_code": 200,
+  "data": {
+    "message": "处理用例 2"
+  },
+  "params_received": {
+    "user_id": "user002"
+  }
+}

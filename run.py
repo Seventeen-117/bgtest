@@ -56,8 +56,11 @@ def build_pytest_args(args):
     if args.workers:
         pytest_args.extend(["-n", str(args.workers)])
     
+    # 默认生成所有报告，除非指定了 --no-reports
+    should_generate_reports = not args.no_reports
+    
     # 添加HTML报告
-    if args.html:
+    if should_generate_reports or args.html:
         try:
             import pytest_html
             html_file = generate_report_filename("html")
@@ -71,7 +74,7 @@ def build_pytest_args(args):
             print("请运行: pip install pytest-html")
     
     # 添加Allure报告
-    if args.allure:
+    if should_generate_reports or args.allure:
         try:
             import allure
             allure_dir = generate_report_filename("allure")
@@ -85,7 +88,7 @@ def build_pytest_args(args):
             print("请运行: pip install allure-pytest")
     
     # 添加覆盖率报告
-    if args.coverage:
+    if should_generate_reports or args.coverage:
         try:
             import pytest_cov
             pytest_args.extend([
@@ -118,12 +121,14 @@ def parse_arguments():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 使用示例:
-  python run.py                           # 执行所有测试
-  python run.py -m "smoke"               # 执行标记为smoke的测试
-  python run.py -k "login"               # 执行包含login的测试
-  python run.py --html --allure          # 生成HTML和Allure报告
-  python run.py --parallel               # 并行执行测试
-  python run.py --coverage               # 生成覆盖率报告
+  python run.py                           # 执行所有测试并生成所有报告
+  python run.py --no-reports             # 执行所有测试但不生成报告
+  python run.py -m "smoke"               # 执行标记为smoke的测试并生成所有报告
+  python run.py -k "login"               # 执行包含login的测试并生成所有报告
+  python run.py --html                   # 只生成HTML报告
+  python run.py --allure                 # 只生成Allure报告
+  python run.py --coverage               # 只生成覆盖率报告
+  python run.py --parallel               # 并行执行测试并生成所有报告
   python run.py --maxfail 3              # 最多失败3个测试后停止
         """
     )
@@ -158,6 +163,11 @@ def parse_arguments():
         "--coverage",
         action="store_true",
         help="生成覆盖率报告"
+    )
+    parser.add_argument(
+        "--no-reports",
+        action="store_true",
+        help="不生成任何报告 (默认会生成所有报告)"
     )
     
     # 执行参数

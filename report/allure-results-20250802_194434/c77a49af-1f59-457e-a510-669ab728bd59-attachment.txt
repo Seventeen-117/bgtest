@@ -1,0 +1,7 @@
+INFO     project_logger:log.py:46 开始测试: TestDynamicDataSource.test_dynamic_sql_generation
+ERROR    project_logger:log.py:49 获取Redis数据失败: Timeout connecting to server
+ERROR    project_logger:log.py:49 MySQL连接失败: (2003, "Can't connect to MySQL server on '8.133.246.113' (timed out)")
+INFO     project_logger:log.py:46 动态SQL查询返回 0 条数据
+INFO     project_logger:log.py:46 使用的SQL: SELECT * FROM test_data LIMIT 10
+INFO     project_logger:log.py:46 慢速测试警告: TestDynamicDataSource.test_dynamic_sql_generation 耗时 99.98秒
+INFO     project_logger:log.py:46 测试完成: TestDynamicDataSource.test_dynamic_sql_generation, 耗时: 99.98秒

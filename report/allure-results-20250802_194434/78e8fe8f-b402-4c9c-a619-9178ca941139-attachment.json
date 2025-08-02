@@ -1,0 +1,10 @@
+{
+  "status_code": 200,
+  "data": {
+    "message": "处理用例 3"
+  },
+  "params_received": {
+    "message": "What is the capital of France?",
+    "user_id": "user003"
+  }
+}

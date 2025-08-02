@@ -1,0 +1,17 @@
+{
+  "case_id": 1,
+  "description": "正常请求-简单问题",
+  "url": "http://localhost:8688/api/chatGatWay-internal",
+  "method": "POST",
+  "params": {
+    "message": "你好，今天天气怎么样？",
+    "user_id": "user001"
+  },
+  "expected_result": {
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "reply": "今天天气晴朗，适合出行。"
+    }
+  }
+}
