@@ -1,2 +1,0 @@
-[32mINFO    [0m project_logger:log.py:46 开始测试: TestAllureWithDecorators.test_performance
-[32mINFO    [0m project_logger:log.py:46 测试完成: TestAllureWithDecorators.test_performance, 耗时: 0.10秒

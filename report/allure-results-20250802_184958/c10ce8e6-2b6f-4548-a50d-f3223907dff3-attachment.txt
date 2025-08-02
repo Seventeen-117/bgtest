@@ -1,2 +1,0 @@
-[32mINFO    [0m project_logger:log.py:46 开始测试: TestAllureBasic.test_exception_handling
-[32mINFO    [0m project_logger:log.py:46 测试完成: TestAllureBasic.test_exception_handling, 耗时: 0.00秒

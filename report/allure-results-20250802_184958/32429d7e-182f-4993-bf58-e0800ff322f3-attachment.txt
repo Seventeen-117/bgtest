@@ -1,2 +1,0 @@
-[32mINFO    [0m project_logger:log.py:46 开始测试: TestAllureSimple.test_mock_api
-[32mINFO    [0m project_logger:log.py:46 测试完成: TestAllureSimple.test_mock_api, 耗时: 0.00秒

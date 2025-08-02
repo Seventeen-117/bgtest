@@ -1,9 +1,0 @@
-{
-  "status_code": 200,
-  "data": {
-    "message": "API调用成功"
-  },
-  "headers": {
-    "Content-Type": "application/json"
-  }
-}

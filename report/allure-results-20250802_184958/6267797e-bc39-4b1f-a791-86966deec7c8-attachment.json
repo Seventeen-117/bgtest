@@ -1,5 +1,0 @@
-{
-  "exception_type": "AssertionError",
-  "exception_message": "设置Redis数据失败\nassert False",
-  "traceback": "NoneType: None\n"
-}

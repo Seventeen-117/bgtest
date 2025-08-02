@@ -1,5 +1,0 @@
-[32mINFO    [0m project_logger:log.py:46 开始测试: TestAssertionUtils.test_assertion_utils_response_contains
-[32mINFO    [0m api_monitor_logger:log.py:57 断言通过: 响应包含文本 success
-[32mINFO    [0m api_monitor_logger:log.py:57 断言通过: 响应包含文本 World
-[1m[31mERROR   [0m api_monitor_logger:log.py:61 断言失败: 响应不包含文本 failure
-[32mINFO    [0m project_logger:log.py:46 测试完成: TestAssertionUtils.test_assertion_utils_response_contains, 耗时: 0.00秒

@@ -1,6 +1,0 @@
-[32mINFO    [0m project_logger:log.py:46 开始测试: TestDynamicDataSource.test_dynamic_sql_generation
-[1m[31mERROR   [0m project_logger:log.py:49 redis未安装，请运行: pip install redis
-[1m[31mERROR   [0m project_logger:log.py:49 pymysql未安装，请运行: pip install pymysql
-[32mINFO    [0m project_logger:log.py:46 动态SQL查询返回 0 条数据
-[32mINFO    [0m project_logger:log.py:46 使用的SQL: SELECT * FROM test_data LIMIT 10
-[32mINFO    [0m project_logger:log.py:46 测试完成: TestDynamicDataSource.test_dynamic_sql_generation, 耗时: 0.00秒

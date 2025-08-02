@@ -1,4 +1,0 @@
-[32mINFO    [0m project_logger:log.py:46 开始测试: TestDynamicDataSource.test_mixed_data_sources
-[1m[31mERROR   [0m project_logger:log.py:49 pymysql未安装，请运行: pip install pymysql
-[32mINFO    [0m project_logger:log.py:46 混合数据源生成了 0 条测试用例
-[32mINFO    [0m project_logger:log.py:46 测试完成: TestDynamicDataSource.test_mixed_data_sources, 耗时: 0.00秒

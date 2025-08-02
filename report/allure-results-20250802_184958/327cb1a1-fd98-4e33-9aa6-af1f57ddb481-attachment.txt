@@ -1,9 +1,0 @@
-[32mINFO    [0m project_logger:log.py:46 开始测试: Unknown.test_http_data[case1]
-[32mINFO    [0m project_logger:log.py:46 执行用例: 2 - 测试POST请求
-[32mINFO    [0m project_logger:log.py:46 请求地址: https://jsonplaceholder.typicode.com/posts
-[32mINFO    [0m project_logger:log.py:46 请求参数: {'title': 'test', 'body': 'test body', 'userId': 1}
-[32mINFO    [0m api_monitor_logger:log.py:57 HTTP请求开始: {"timestamp": 1754131843.6322718, "method": "POST", "url": "https://jsonplaceholder.typicode.com/posts", "params": {}, "json_data": {"title": "test", "body": "test body", "userId": 1}, "headers": {}}
-[32mINFO    [0m api_monitor_logger:log.py:57 HTTP请求成功: {"timestamp": 1754131851.1567135, "method": "POST", "url": "https://jsonplaceholder.typicode.com/posts", "status_code": 201, "execution_time_ms": 7524.44, "response_size": 72, "status": "success"}
-[32mINFO    [0m project_logger:log.py:46 接口返回: {'title': 'test', 'body': 'test body', 'userId': 1, 'id': 101}
-[32mINFO    [0m project_logger:log.py:46 慢速测试警告: Unknown.test_http_data[case1] 耗时 7.53秒
-[32mINFO    [0m project_logger:log.py:46 测试完成: Unknown.test_http_data[case1], 耗时: 7.53秒

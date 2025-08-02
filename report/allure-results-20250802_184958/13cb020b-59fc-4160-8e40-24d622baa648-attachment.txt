@@ -1,8 +1,0 @@
-[32mINFO    [0m project_logger:log.py:46 开始测试: Unknown.test_http_data[case0]
-[32mINFO    [0m project_logger:log.py:46 执行用例: 1 - 测试GET请求
-[32mINFO    [0m project_logger:log.py:46 请求地址: https://jsonplaceholder.typicode.com/posts/1
-[32mINFO    [0m project_logger:log.py:46 请求参数: {}
-[32mINFO    [0m api_monitor_logger:log.py:57 HTTP请求开始: {"timestamp": 1754131842.343222, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "params": {}, "json_data": {}, "headers": {}}
-[32mINFO    [0m api_monitor_logger:log.py:57 HTTP请求成功: {"timestamp": 1754131843.6238005, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "status_code": 200, "execution_time_ms": 1280.58, "response_size": 292, "status": "success"}
-[32mINFO    [0m project_logger:log.py:46 接口返回: {'userId': 1, 'id': 1, 'title': 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'body': 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'}
-[32mINFO    [0m project_logger:log.py:46 测试完成: Unknown.test_http_data[case0], 耗时: 1.28秒

@@ -1,2 +1,0 @@
-数据源: caseparams/test_chat_gateway.yaml
-数据类型: file
