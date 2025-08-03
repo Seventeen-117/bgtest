@@ -1,0 +1,10 @@
+{
+  "method": "POST",
+  "url": "https://invalid-url.com/chat",
+  "headers": {},
+  "params": {},
+  "data": {},
+  "json_data": {
+    "message": "test"
+  }
+}

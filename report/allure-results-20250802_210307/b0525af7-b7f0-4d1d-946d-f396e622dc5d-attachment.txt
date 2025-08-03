@@ -1,0 +1,30 @@
+INFO     project_logger:log.py:46 开始测试: TestDataDrivenExample.test_all_files_data_driven
+INFO     project_logger:log.py:46 测试文件: test_http_data
+INFO     project_logger:log.py:46 执行用例: 1 - 测试GET请求
+INFO     project_logger:log.py:46 请求地址: https://jsonplaceholder.typicode.com/posts/1
+INFO     project_logger:log.py:46 请求参数: {}
+INFO     api_monitor_logger:log.py:57 HTTP请求开始: {"timestamp": 1754139855.561997, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "params": {}, "json_data": {}, "headers": {}}
+INFO     api_monitor_logger:log.py:57 HTTP请求成功: {"timestamp": 1754139858.4404218, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "status_code": 200, "execution_time_ms": 2878.42, "response_size": 292, "status": "success"}
+INFO     project_logger:log.py:46 接口返回: {'userId': 1, 'id': 1, 'title': 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'body': 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'}
+INFO     project_logger:log.py:46 执行用例: 2 - 测试POST请求
+INFO     project_logger:log.py:46 请求地址: https://jsonplaceholder.typicode.com/posts
+INFO     project_logger:log.py:46 请求参数: {'title': 'test', 'body': 'test body', 'userId': 1}
+INFO     api_monitor_logger:log.py:57 HTTP请求开始: {"timestamp": 1754139858.4415462, "method": "POST", "url": "https://jsonplaceholder.typicode.com/posts", "params": {}, "json_data": {"title": "test", "body": "test body", "userId": 1}, "headers": {}}
+INFO     api_monitor_logger:log.py:57 HTTP请求成功: {"timestamp": 1754139864.803228, "method": "POST", "url": "https://jsonplaceholder.typicode.com/posts", "status_code": 201, "execution_time_ms": 6361.68, "response_size": 72, "status": "success"}
+INFO     project_logger:log.py:46 接口返回: {'title': 'test', 'body': 'test body', 'userId': 1, 'id': 101}
+INFO     project_logger:log.py:46 执行用例: 3 - 测试带参数GET
+INFO     project_logger:log.py:46 请求地址: https://jsonplaceholder.typicode.com/posts/1
+INFO     project_logger:log.py:46 请求参数: {}
+INFO     api_monitor_logger:log.py:57 HTTP请求开始: {"timestamp": 1754139864.804545, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "params": {}, "json_data": {}, "headers": {}}
+INFO     api_monitor_logger:log.py:57 HTTP请求成功: {"timestamp": 1754139867.7754989, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "status_code": 200, "execution_time_ms": 2970.95, "response_size": 292, "status": "success"}
+INFO     project_logger:log.py:46 接口返回: {'userId': 1, 'id': 1, 'title': 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'body': 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'}
+INFO     project_logger:log.py:46 测试文件: test_chat_gateway
+INFO     project_logger:log.py:46 执行用例: 1 - 正常请求-简单问题
+INFO     project_logger:log.py:46 请求地址: http://localhost:8688/api/chatGatWay-internal
+INFO     project_logger:log.py:46 请求参数: {'message': '你好，今天天气怎么样？', 'user_id': 'user001'}
+INFO     api_monitor_logger:log.py:57 HTTP请求开始: {"timestamp": 1754139867.7768412, "method": "POST", "url": "http://localhost:8688/api/chatGatWay-internal", "params": {}, "json_data": {"message": "你好，今天天气怎么样？", "user_id": "user001"}, "headers": {}}
+ERROR    utils.http_utils:http_utils.py:147 请求失败: HTTPConnectionPool(host='localhost', port=8688): Max retries exceeded with url: /api/chatGatWay-internal (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000014DF37A4D10>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+ERROR    api_monitor_logger:log.py:61 HTTP请求失败: {"timestamp": 1754139871.8528402, "method": "POST", "url": "http://localhost:8688/api/chatGatWay-internal", "status_code": null, "execution_time_ms": 4076.0, "response_size": 0, "status": "error", "error": "HTTPConnectionPool(host='localhost', port=8688): Max retries exceeded with url: /api/chatGatWay-internal (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000014DF37A4D10>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))"}
+ERROR    project_logger:log.py:49 测试用例执行失败: HTTPConnectionPool(host='localhost', port=8688): Max retries exceeded with url: /api/chatGatWay-internal (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000014DF37A4D10>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+INFO     project_logger:log.py:46 慢速测试警告: TestDataDrivenExample.test_all_files_data_driven 耗时 16.29秒
+INFO     project_logger:log.py:46 测试完成: TestDataDrivenExample.test_all_files_data_driven, 耗时: 16.30秒

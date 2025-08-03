@@ -1,0 +1,2 @@
+INFO     project_logger:log.py:46 开始测试: Unknown.test_assertion_statistics
+INFO     project_logger:log.py:46 测试完成: Unknown.test_assertion_statistics, 耗时: 0.00秒

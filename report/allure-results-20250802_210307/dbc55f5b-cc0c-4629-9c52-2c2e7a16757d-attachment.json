@@ -1,0 +1,10 @@
+{
+  "method": "POST",
+  "url": "http://localhost:8688/api/chatGatWay-internal",
+  "headers": {},
+  "params": {},
+  "data": {},
+  "json_data": {
+    "user_id": "user002"
+  }
+}

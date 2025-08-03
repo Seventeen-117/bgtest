@@ -1,0 +1,6 @@
+INFO     project_logger:log.py:46 开始测试: TestDynamicDataSource.test_dynamic_sql_generation
+ERROR    project_logger:log.py:49 未找到数据库类型 redis 的配置
+ERROR    project_logger:log.py:49 未找到数据库类型 mysql 的配置
+INFO     project_logger:log.py:46 动态SQL查询返回 0 条数据
+INFO     project_logger:log.py:46 使用的SQL: SELECT * FROM test_data LIMIT 10
+INFO     project_logger:log.py:46 测试完成: TestDynamicDataSource.test_dynamic_sql_generation, 耗时: 0.00秒

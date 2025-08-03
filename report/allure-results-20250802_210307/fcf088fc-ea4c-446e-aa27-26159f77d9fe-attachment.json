@@ -1,0 +1,11 @@
+{
+  "case_id": "error_002",
+  "description": "测试无效参数",
+  "url": "https://api.example.com/chat",
+  "method": "POST",
+  "params": {},
+  "expected": {
+    "error": "invalid_parameters"
+  },
+  "headers": {}
+}

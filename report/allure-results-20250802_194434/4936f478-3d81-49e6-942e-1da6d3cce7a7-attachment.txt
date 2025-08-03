@@ -1,7 +1,0 @@
-INFO     project_logger:log.py:46 开始测试: Unknown.test_chat_gateway[case2]
-INFO     project_logger:log.py:46 请求地址: http://localhost:8688/api/chatGatWay-internal
-INFO     project_logger:log.py:46 请求参数: {'message': 'What is the capital of France?', 'user_id': 'user003'}
-INFO     api_monitor_logger:log.py:57 HTTP请求开始: {"timestamp": 1754135088.4896855, "method": "POST", "url": "http://localhost:8688/api/chatGatWay-internal", "params": {}, "json_data": {"message": "What is the capital of France?", "user_id": "user003"}, "headers": {}}
-ERROR    utils.http_utils:http_utils.py:147 请求失败: HTTPConnectionPool(host='localhost', port=8688): Max retries exceeded with url: /api/chatGatWay-internal (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A5B6A33B10>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
-ERROR    api_monitor_logger:log.py:61 HTTP请求失败: {"timestamp": 1754135092.5625079, "method": "POST", "url": "http://localhost:8688/api/chatGatWay-internal", "status_code": null, "execution_time_ms": 4072.82, "response_size": 0, "status": "error", "error": "HTTPConnectionPool(host='localhost', port=8688): Max retries exceeded with url: /api/chatGatWay-internal (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A5B6A33B10>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))"}
-INFO     project_logger:log.py:46 测试完成: Unknown.test_chat_gateway[case2], 耗时: 4.73秒

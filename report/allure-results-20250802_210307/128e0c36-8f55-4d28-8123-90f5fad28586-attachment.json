@@ -1,0 +1,13 @@
+{
+  "case_id": "error_001",
+  "description": "测试无效URL",
+  "url": "https://invalid-url.com/chat",
+  "method": "POST",
+  "params": {
+    "message": "test"
+  },
+  "expected": {
+    "error": "connection_failed"
+  },
+  "headers": {}
+}

@@ -1,0 +1,5 @@
+INFO     project_logger:log.py:46 开始测试: TestChatGatewayWithDynamicData.test_data_source_cleanup
+ERROR    project_logger:log.py:49 未找到数据库类型 mysql 的配置
+INFO     project_logger:log.py:46 聊天测试用例总数: []
+INFO     project_logger:log.py:46 数据源连接已清理
+INFO     project_logger:log.py:46 测试完成: TestChatGatewayWithDynamicData.test_data_source_cleanup, 耗时: 0.00秒

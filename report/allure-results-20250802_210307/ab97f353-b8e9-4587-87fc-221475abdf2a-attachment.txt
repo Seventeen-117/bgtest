@@ -1,0 +1,4 @@
+INFO     project_logger:log.py:46 开始测试: TestDynamicDataSource.test_mixed_data_sources
+ERROR    project_logger:log.py:49 未找到数据库类型 mysql 的配置
+INFO     project_logger:log.py:46 混合数据源生成了 0 条测试用例
+INFO     project_logger:log.py:46 测试完成: TestDynamicDataSource.test_mixed_data_sources, 耗时: 0.01秒

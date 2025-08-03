@@ -22,6 +22,9 @@ from common.log import info, error, debug
 from utils.http_utils import HTTPUtils
 from utils.allure_utils import AllureUtils, attach_text, attach_json, attach_exception
 
+# 导入ORM相关模块
+from utils.orm_fixtures import *
+
 
 # ==================== 配置和初始化 ====================
 

@@ -1,0 +1,13 @@
+{
+  "case_id": "validation_001",
+  "description": "测试空消息",
+  "url": "https://api.example.com/chat",
+  "method": "POST",
+  "params": {
+    "message": ""
+  },
+  "expected": {
+    "error": "empty_message"
+  },
+  "headers": {}
+}

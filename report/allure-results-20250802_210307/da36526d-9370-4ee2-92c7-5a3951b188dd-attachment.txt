@@ -1,0 +1,3 @@
+API: 聊天网关
+方法: POST
+URL: https://api.example.com/chat

@@ -1,3 +1,0 @@
-INFO     project_logger:log.py:46 开始测试: TestDynamicDataSource.test_data_from_file
-INFO     project_logger:log.py:46 从文件加载了 3 条测试数据
-INFO     project_logger:log.py:46 测试完成: TestDynamicDataSource.test_data_from_file, 耗时: 0.03秒

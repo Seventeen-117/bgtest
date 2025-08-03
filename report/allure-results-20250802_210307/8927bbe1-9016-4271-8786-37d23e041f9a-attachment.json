@@ -1,0 +1,15 @@
+{
+  "case_id": 2,
+  "description": "异常请求-缺少message参数",
+  "url": "http://localhost:8688/api/chatGatWay-internal",
+  "method": "POST",
+  "params": {
+    "user_id": "user002"
+  },
+  "expected": {
+    "code": 400,
+    "msg": "参数缺失: message",
+    "data": {}
+  },
+  "headers": {}
+}

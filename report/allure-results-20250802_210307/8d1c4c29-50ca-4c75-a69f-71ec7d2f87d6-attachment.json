@@ -1,0 +1,10 @@
+{
+  "method": "POST",
+  "url": "https://api.example.com/chat",
+  "headers": {},
+  "params": {},
+  "data": {},
+  "json_data": {
+    "message": ""
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "method": "POST",
+  "url": "http://localhost:8688/api/chatGatWay-internal",
+  "headers": {},
+  "params": {},
+  "data": {},
+  "json_data": {
+    "message": "你好，今天天气怎么样？",
+    "user_id": "user001"
+  }
+}
