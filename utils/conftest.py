@@ -25,6 +25,9 @@ from utils.allure_utils import AllureUtils, attach_text, attach_json, attach_exc
 # 导入ORM相关模块
 from utils.orm_fixtures import *
 
+# 导入数据驱动框架
+from common.data_driven_framework import data_driven_framework, pytest_generate_tests
+
 
 # ==================== 配置和初始化 ====================
 

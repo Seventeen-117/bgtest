@@ -1,0 +1,150 @@
+# 统一数据驱动测试框架配置文件
+# 支持文件、数据库、动态生成三种数据源
+
+# ==================== 文件数据源测试 ====================
+file_data_tests:
+  - case_id: "FILE_001"
+    description: "文件数据源测试 - 正常请求"
+    url: "https://api.example.com/test"
+    method: "POST"
+    params:
+      message: "Hello World"
+      user_id: "user001"
+    expected_result:
+      code: 0
+      msg: "success"
+      data:
+        reply: "Hello World"
+
+  - case_id: "FILE_002"
+    description: "文件数据源测试 - 异常请求"
+    url: "https://api.example.com/test"
+    method: "POST"
+    params:
+      user_id: "user002"
+    expected_result:
+      code: 400
+      msg: "参数缺失: message"
+      data: {}
+
+# ==================== 数据库数据源测试 ====================
+database_data_tests:
+  - case_id: "DB_001"
+    description: "数据库数据源测试"
+    data_source: "db://mysql/test/SELECT * FROM test_cases WHERE status = 'active' LIMIT 5"
+    url: "https://api.example.com/db_test"
+    method: "POST"
+    expected_result:
+      status_code: 200
+
+# ==================== 动态数据源测试 ====================
+dynamic_data_tests:
+  - case_id: "DYNAMIC_001"
+    description: "动态数据源测试"
+    data_source: "dynamic://sequential"
+    generator_params:
+      count: 5
+      base_url: "https://api.example.com"
+      method: "GET"
+    url: "https://api.example.com/dynamic_test"
+    method: "GET"
+    expected_result:
+      status_code: 200
+
+# ==================== 混合数据源测试 ====================
+mixed_data_tests:
+  - case_id: "MIXED_001"
+    description: "混合数据源测试"
+    data_source: "mixed"
+    base_config:
+      url: "https://api.example.com/mixed_test"
+      method: "POST"
+    dynamic_data_query: "db://mysql/test/SELECT user_id, username FROM users WHERE is_active = 1 LIMIT 3"
+    cache_config_key: "test:cache:config"
+    merge_strategy: "cross_product"
+    expected_result:
+      status_code: 200
+
+# ==================== API测试配置 ====================
+api_test_config:
+  base_url: "https://api.example.com"
+  timeout: 30
+  retry_count: 3
+  headers:
+    Content-Type: "application/json"
+    User-Agent: "DataDrivenTestFramework/1.0"
+
+# ==================== 数据处理器配置 ====================
+data_processors:
+  validate:
+    enabled: true
+    required_fields: ["case_id", "url", "method"]
+    default_values:
+      params: {}
+      expected_result: {}
+      description: "测试用例"
+
+  add_timestamp:
+    enabled: true
+    timestamp_field: "created_at"
+    unix_timestamp_field: "timestamp"
+
+# ==================== 动态生成器配置 ====================
+dynamic_generators:
+  sequential:
+    count: 10
+    base_url: "https://api.example.com"
+    method: "GET"
+    url_template: "/test/{id}"
+
+  random:
+    count: 5
+    base_url: "https://api.example.com"
+    methods: ["GET", "POST", "PUT", "DELETE"]
+    url_template: "/random/{random_id}"
+
+  api_test:
+    base_url: "https://api.example.com"
+    endpoints: ["/users", "/posts", "/comments"]
+    methods: ["GET", "POST"]
+    url_template: "{endpoint}"
+
+# ==================== 测试环境配置 ====================
+environments:
+  dev:
+    base_url: "https://dev-api.example.com"
+    database: "db://mysql/dev"
+    redis: "redis://localhost:6379/0"
+
+  test:
+    base_url: "https://test-api.example.com"
+    database: "db://mysql/test"
+    redis: "redis://localhost:6379/1"
+
+  prod:
+    base_url: "https://prod-api.example.com"
+    database: "db://mysql/prod"
+    redis: "redis://localhost:6379/2"
+
+# ==================== 性能测试配置 ====================
+performance_config:
+  file_load_timeout: 1.0
+  dynamic_generation_timeout: 0.5
+  mixed_load_timeout: 2.0
+  database_query_timeout: 5.0
+
+# ==================== 错误处理配置 ====================
+error_handling:
+  ignore_missing_files: true
+  ignore_database_errors: false
+  ignore_redis_errors: true
+  fallback_to_default: true
+  log_errors: true
+
+# ==================== 报告配置 ====================
+report_config:
+  attach_test_data: true
+  attach_performance_metrics: true
+  attach_error_details: true
+  allure_steps: true
+  html_attachments: true 
