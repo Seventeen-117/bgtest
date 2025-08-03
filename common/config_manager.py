@@ -159,6 +159,9 @@ class ConfigManager:
         config_data = self.load_yaml(config_path)
         if 'env' in config_data:
             self.env_config.update(config_data['env'])
+        elif 'database' in config_data:
+            # 处理数据库配置文件
+            self.env_config.update(config_data)
         elif 'interfaces' in config_data:
             self._merge_interface_config(config_data)
         else:
@@ -206,7 +209,15 @@ class ConfigManager:
     def get_env_config(self, env: Optional[str] = None) -> Dict:
         if env is None:
             env = self.get_current_env()
-        return self.env_config.get(env, {})
+        
+        # 获取环境配置
+        env_config = self.env_config.get(env, {})
+        
+        # 合并数据库配置
+        if 'database' in self.env_config:
+            env_config['database'] = self.env_config['database']
+        
+        return env_config
     
     def get_api_base_url(self, env: Optional[str] = None) -> str:
         env_config = self.get_env_config(env)
@@ -217,7 +228,7 @@ class ConfigManager:
     
     def get_database_config(self, env: Optional[str] = None) -> Dict:
         env_config = self.get_env_config(env)
-        return env_config.get('db', {})
+        return env_config.get('database', {})
     
     def get_interface_info(self, module: str, interface: str, env: Optional[str] = None) -> Dict:
         try:

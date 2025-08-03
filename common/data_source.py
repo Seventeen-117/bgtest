@@ -25,7 +25,7 @@ class DataSourceManager:
         try:
             # 使用config_manager获取环境配置
             env_config = self._config_manager.get_env_config(env)
-            db_config = env_config.get('db', {})
+            db_config = env_config.get('database', {})
             
             if not db_config:
                 error(f"未找到环境 {env} 的数据库配置")
@@ -38,7 +38,13 @@ class DataSourceManager:
                 error(f"未找到数据库类型 {db_type} 的配置")
                 return {}
                 
-            return db_config[db_type]
+            # 获取特定环境的配置
+            db_type_config = db_config[db_type]
+            if env not in db_type_config:
+                error(f"未找到数据库类型 {db_type} 在环境 {env} 的配置")
+                return {}
+                
+            return db_type_config[env]
             
         except Exception as e:
             error(f"获取数据库配置失败: {e}")
