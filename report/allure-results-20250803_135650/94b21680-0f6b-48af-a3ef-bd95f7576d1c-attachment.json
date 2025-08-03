@@ -1,0 +1,5 @@
+{
+  "exception_type": "AttributeError",
+  "exception_message": "'QueuePool' object has no attribute 'invalid'",
+  "traceback": "Traceback (most recent call last):\n  File \"E:\\bgtest\\utils\\allure_decorators.py\", line 31, in wrapper\n    result = func(*args, **kwargs)\n  File \"E:\\bgtest\\utils\\test_decorators.py\", line 29, in wrapper\n    return func(*args, **kwargs)\n  File \"E:\\bgtest\\utils\\test_decorators.py\", line 286, in wrapper\n    return func(*args, **kwargs)\n  File \"E:\\bgtest\\utils\\test_decorators.py\", line 300, in wrapper\n    return func(*args, **kwargs)\n  File \"E:\\bgtest\\testcase\\test_orm_integration.py\", line 197, in test_connection_pool_status\n    pool_status = db_manager.get_connection_pool_status('mysql', 'test')\n  File \"E:\\bgtest\\common\\orm_manager.py\", line 442, in get_connection_pool_status\n    'invalid': pool.invalid()\n               ^^^^^^^^^^^^\nAttributeError: 'QueuePool' object has no attribute 'invalid'\n"
+}

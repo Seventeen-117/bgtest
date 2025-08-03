@@ -1,0 +1,10 @@
+INFO     project_logger:log.py:46 开始测试: Unknown.test_csv_parameterized[case0]
+INFO     project_logger:log.py:46 参数化测试 - 用例: 1 - 测试GET请求
+INFO     project_logger:log.py:46 请求地址: https://jsonplaceholder.typicode.com/posts/1
+INFO     project_logger:log.py:46 请求参数: {}
+INFO     api_monitor_logger:log.py:57 HTTP请求开始: {"timestamp": 1754201097.7433765, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "params": {}, "json_data": {}, "headers": {}}
+ERROR    utils.http_utils:http_utils.py:147 请求失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+ERROR    api_monitor_logger:log.py:61 HTTP请求失败: {"timestamp": 1754201124.8510988, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "status_code": null, "execution_time_ms": 27107.72, "response_size": 0, "status": "error", "error": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"}
+ERROR    project_logger:log.py:49 参数化测试执行失败: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+INFO     project_logger:log.py:46 慢速测试警告: Unknown.test_csv_parameterized[case0] 耗时 27.11秒
+INFO     project_logger:log.py:46 测试完成: Unknown.test_csv_parameterized[case0], 耗时: 27.13秒

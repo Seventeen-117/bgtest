@@ -1,4 +1,0 @@
-INFO     project_logger:log.py:46 开始测试: TestAssertionUtils.test_assertion_utils_json_structure
-INFO     api_monitor_logger:log.py:57 断言通过: JSON结构验证成功
-ERROR    api_monitor_logger:log.py:61 断言失败: 响应中缺少字段: missing_field
-INFO     project_logger:log.py:46 测试完成: TestAssertionUtils.test_assertion_utils_json_structure, 耗时: 0.00秒

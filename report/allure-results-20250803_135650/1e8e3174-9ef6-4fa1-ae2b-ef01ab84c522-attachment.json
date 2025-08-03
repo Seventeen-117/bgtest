@@ -1,0 +1,5 @@
+{
+  "exception_type": "AttributeError",
+  "exception_message": "'QueuePool' object has no attribute 'invalid'",
+  "traceback": "NoneType: None\n"
+}

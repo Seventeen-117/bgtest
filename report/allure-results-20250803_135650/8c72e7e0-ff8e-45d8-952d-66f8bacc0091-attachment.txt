@@ -1,0 +1,4 @@
+INFO     project_logger:log.py:46 开始测试: TestDatabaseIntegration.test_connection_pool_status
+INFO     project_logger:log.py:46 开始数据库集成测试
+INFO     project_logger:log.py:46 完成数据库集成测试
+INFO     project_logger:log.py:46 测试完成: TestDatabaseIntegration.test_connection_pool_status, 耗时: 0.12秒

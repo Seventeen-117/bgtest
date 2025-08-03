@@ -1,0 +1,5 @@
+{
+  "exception_type": "ArgumentError",
+  "exception_message": "Textual SQL expression 'SELECT COUNT(*) as count ...' should be explicitly declared as text('SELECT COUNT(*) as count ...')",
+  "traceback": "NoneType: None\n"
+}

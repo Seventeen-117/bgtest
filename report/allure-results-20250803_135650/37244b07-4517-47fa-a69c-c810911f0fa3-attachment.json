@@ -1,0 +1,5 @@
+{
+  "exception_type": "ArgumentError",
+  "exception_message": "Textual SQL expression 'SELECT 1 as test' should be explicitly declared as text('SELECT 1 as test')",
+  "traceback": "NoneType: None\n"
+}

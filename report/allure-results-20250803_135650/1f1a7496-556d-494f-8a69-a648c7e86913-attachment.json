@@ -1,0 +1,5 @@
+{
+  "exception_type": "ArgumentError",
+  "exception_message": "Textual SQL expression 'INSERT INTO test_table (n...' should be explicitly declared as text('INSERT INTO test_table (n...')",
+  "traceback": "NoneType: None\n"
+}

@@ -1,0 +1,16 @@
+INFO     project_logger:log.py:46 开始测试: Unknown.test_http_data_file
+INFO     project_logger:log.py:46 HTTP数据测试 - 用例: 1 - 测试GET请求
+INFO     api_monitor_logger:log.py:57 HTTP请求开始: {"timestamp": 1754201152.2877357, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "params": {}, "json_data": {}, "headers": {}}
+INFO     api_monitor_logger:log.py:57 HTTP请求成功: {"timestamp": 1754201157.2173052, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "status_code": 200, "execution_time_ms": 4929.56, "response_size": 292, "status": "success"}
+INFO     project_logger:log.py:46 接口返回: {'userId': 1, 'id': 1, 'title': 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'body': 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'}
+INFO     project_logger:log.py:46 HTTP数据测试 - 用例: 2 - 测试POST请求
+INFO     api_monitor_logger:log.py:57 HTTP请求开始: {"timestamp": 1754201157.220371, "method": "POST", "url": "https://jsonplaceholder.typicode.com/posts", "params": {}, "json_data": {"title": "test", "body": "test body", "userId": 1}, "headers": {}}
+INFO     api_monitor_logger:log.py:57 HTTP请求成功: {"timestamp": 1754201169.3477345, "method": "POST", "url": "https://jsonplaceholder.typicode.com/posts", "status_code": 201, "execution_time_ms": 12127.36, "response_size": 72, "status": "success"}
+INFO     project_logger:log.py:46 接口返回: {'title': 'test', 'body': 'test body', 'userId': 1, 'id': 101}
+INFO     project_logger:log.py:46 HTTP数据测试 - 用例: 3 - 测试带参数GET
+INFO     api_monitor_logger:log.py:57 HTTP请求开始: {"timestamp": 1754201169.3500845, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "params": {}, "json_data": {}, "headers": {}}
+ERROR    utils.http_utils:http_utils.py:147 请求失败: HTTPSConnectionPool(host='jsonplaceholder.typicode.com', port=443): Read timed out. (read timeout=30)
+ERROR    api_monitor_logger:log.py:61 HTTP请求失败: {"timestamp": 1754201200.4394562, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "status_code": null, "execution_time_ms": 31089.37, "response_size": 0, "status": "error", "error": "HTTPSConnectionPool(host='jsonplaceholder.typicode.com', port=443): Read timed out. (read timeout=30)"}
+ERROR    project_logger:log.py:49 HTTP数据测试执行失败: HTTPSConnectionPool(host='jsonplaceholder.typicode.com', port=443): Read timed out. (read timeout=30)
+INFO     project_logger:log.py:46 慢速测试警告: Unknown.test_http_data_file 耗时 48.16秒
+INFO     project_logger:log.py:46 测试完成: Unknown.test_http_data_file, 耗时: 48.18秒

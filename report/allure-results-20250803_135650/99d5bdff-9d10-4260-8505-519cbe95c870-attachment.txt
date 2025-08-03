@@ -1,0 +1,17 @@
+INFO     project_logger:log.py:46 开始测试: TestDatabaseIntegration.test_sql_update
+INFO     project_logger:log.py:46 开始数据库集成测试
+INFO     project_logger:log.py:46 创建数据库会话: mysql+pymysql://bgtech:***@8.133.246.113:3306/bgpay?charset=utf8mb4
+ERROR    project_logger:log.py:49 执行SQL失败: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '8.133.246.113' (timed out)")
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+ERROR    project_logger:log.py:49 数据库操作失败: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '8.133.246.113' (timed out)")
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO     project_logger:log.py:46 测试表已存在或创建失败: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '8.133.246.113' (timed out)")
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+ERROR    project_logger:log.py:49 执行更新SQL失败: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '8.133.246.113' (timed out)")
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+ERROR    project_logger:log.py:49 数据库操作失败: (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on '8.133.246.113' (timed out)")
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO     project_logger:log.py:46 慢速测试警告: TestDatabaseIntegration.test_sql_update 耗时 20.08秒
+INFO     project_logger:log.py:46 关闭数据库会话
+INFO     project_logger:log.py:46 完成数据库集成测试
+INFO     project_logger:log.py:46 测试完成: TestDatabaseIntegration.test_sql_update, 耗时: 22.53秒

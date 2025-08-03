@@ -1,0 +1,5 @@
+INFO     project_logger:log.py:46 开始测试: TestDynamicDataSource.test_redis_data_source
+INFO     project_logger:log.py:46 成功创建数据库连接: redis_test
+ERROR    project_logger:log.py:49 设置Redis数据失败: Timeout connecting to server
+INFO     project_logger:log.py:46 慢速测试警告: TestDynamicDataSource.test_redis_data_source 耗时 91.70秒
+INFO     project_logger:log.py:46 测试完成: TestDynamicDataSource.test_redis_data_source, 耗时: 91.74秒

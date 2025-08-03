@@ -1,0 +1,4 @@
+INFO     project_logger:log.py:46 开始测试: TestDatabaseFixtures.test_sqlite_session_fixture
+INFO     project_logger:log.py:46 创建SQLite数据库会话
+INFO     project_logger:log.py:46 关闭SQLite数据库会话
+INFO     project_logger:log.py:46 测试完成: TestDatabaseFixtures.test_sqlite_session_fixture, 耗时: 0.50秒

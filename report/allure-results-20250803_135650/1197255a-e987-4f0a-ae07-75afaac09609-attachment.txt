@@ -1,0 +1,12 @@
+INFO     project_logger:log.py:46 开始测试: TestDatabaseIntegration.test_database_switching
+INFO     project_logger:log.py:46 开始数据库集成测试
+INFO     project_logger:log.py:46 切换到数据库: mysql - test
+INFO     project_logger:log.py:46 切换到数据库: postgresql - test
+INFO     project_logger:log.py:46 成功创建数据库引擎: postgresql_test
+INFO     project_logger:log.py:46 成功创建数据库会话: postgresql_test
+INFO     project_logger:log.py:46 切换到数据库: sqlite - test
+INFO     project_logger:log.py:46 成功创建数据库引擎: sqlite_test
+INFO     project_logger:log.py:46 成功创建数据库会话: sqlite_test
+INFO     project_logger:log.py:46 数据库切换测试通过
+INFO     project_logger:log.py:46 完成数据库集成测试
+INFO     project_logger:log.py:46 测试完成: TestDatabaseIntegration.test_database_switching, 耗时: 0.27秒

@@ -1,3 +1,0 @@
-INFO     project_logger:log.py:46 开始测试: TestDynamicDataSource.test_redis_data_source
-ERROR    project_logger:log.py:49 未找到数据库类型 redis 的配置
-INFO     project_logger:log.py:46 测试完成: TestDynamicDataSource.test_redis_data_source, 耗时: 0.02秒

@@ -1,0 +1,1 @@
+[<TracebackEntry E:\bgtest\testcase\test_chat_gateway_optimized.py:63>, <TracebackEntry E:\bgtest\common\test_utils.py:308>, <TracebackEntry E:\bgtest\common\test_utils.py:133>]

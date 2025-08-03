@@ -1,0 +1,7 @@
+INFO     project_logger:log.py:46 开始测试: TestDatabaseHelpers.test_get_table_structure
+INFO     project_logger:log.py:46 创建数据库会话: mysql+pymysql://bgtech:***@8.133.246.113:3306/bgpay?charset=utf8mb4
+ERROR    project_logger:log.py:49 获取表结构信息失败: Textual SQL expression '\n            SELECT \n    ...' should be explicitly declared as text('\n            SELECT \n    ...')
+INFO     project_logger:log.py:46 表结构查询功能测试通过
+INFO     project_logger:log.py:46 关闭数据库会话
+INFO     project_logger:log.py:46 测试完成: TestDatabaseHelpers.test_get_table_structure, 耗时: 0.02秒
+INFO     project_logger:log.py:46 已关闭所有数据库连接

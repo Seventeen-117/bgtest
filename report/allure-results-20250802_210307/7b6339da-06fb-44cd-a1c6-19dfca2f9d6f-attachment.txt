@@ -1,1 +1,0 @@
-请求失败: HTTPConnectionPool(host='localhost', port=8688): Max retries exceeded with url: /api/chatGatWay-internal (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000014DF33407D0>: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))

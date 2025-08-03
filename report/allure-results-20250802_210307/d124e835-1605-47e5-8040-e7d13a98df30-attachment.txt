@@ -1,4 +1,0 @@
-INFO     project_logger:log.py:46 开始测试: TestAssertionUtils.test_assertion_utils_status_code
-INFO     api_monitor_logger:log.py:57 断言通过: 状态码 200 == 200
-ERROR    api_monitor_logger:log.py:61 断言失败: 状态码期望 404, 实际 200
-INFO     project_logger:log.py:46 测试完成: TestAssertionUtils.test_assertion_utils_status_code, 耗时: 0.01秒

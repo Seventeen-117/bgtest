@@ -1,0 +1,11 @@
+INFO     project_logger:log.py:46 开始测试: TestDatabaseIntegration.test_multi_database_consistency[postgresql]
+INFO     project_logger:log.py:46 开始数据库集成测试
+INFO     project_logger:log.py:46 切换到数据库: postgresql - test
+ERROR    project_logger:log.py:49 执行SQL失败: (psycopg2.OperationalError) could not translate host name "123456@8.133.246.113" to address: Non-recoverable failure in name resolution
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+ERROR    project_logger:log.py:49 数据库操作失败: (psycopg2.OperationalError) could not translate host name "123456@8.133.246.113" to address: Non-recoverable failure in name resolution
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+INFO     project_logger:log.py:46 完成数据库集成测试
+INFO     project_logger:log.py:46 测试完成: TestDatabaseIntegration.test_multi_database_consistency[postgresql], 耗时: 2.44秒

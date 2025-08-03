@@ -1,9 +1,0 @@
-INFO     project_logger:log.py:46 开始测试: Unknown.test_csv_parameterized[case0]
-INFO     project_logger:log.py:46 参数化测试 - 用例: 1 - 测试GET请求
-INFO     project_logger:log.py:46 请求地址: https://jsonplaceholder.typicode.com/posts/1
-INFO     project_logger:log.py:46 请求参数: {}
-INFO     api_monitor_logger:log.py:57 HTTP请求开始: {"timestamp": 1754139894.9179506, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "params": {}, "json_data": {}, "headers": {}}
-INFO     api_monitor_logger:log.py:57 HTTP请求成功: {"timestamp": 1754139910.3421474, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "status_code": 200, "execution_time_ms": 15424.19, "response_size": 292, "status": "success"}
-INFO     project_logger:log.py:46 接口返回: {'userId': 1, 'id': 1, 'title': 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'body': 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'}
-INFO     project_logger:log.py:46 慢速测试警告: Unknown.test_csv_parameterized[case0] 耗时 15.43秒
-INFO     project_logger:log.py:46 测试完成: Unknown.test_csv_parameterized[case0], 耗时: 15.43秒

@@ -1,0 +1,5 @@
+INFO     project_logger:log.py:46 开始测试: TestDynamicDataSource.test_mixed_data_sources
+ERROR    project_logger:log.py:49 MySQL连接失败: (2003, "Can't connect to MySQL server on '8.133.246.113' (timed out)")
+INFO     project_logger:log.py:46 混合数据源生成了 0 条测试用例
+INFO     project_logger:log.py:46 慢速测试警告: TestDynamicDataSource.test_mixed_data_sources 耗时 10.02秒
+INFO     project_logger:log.py:46 测试完成: TestDynamicDataSource.test_mixed_data_sources, 耗时: 10.03秒

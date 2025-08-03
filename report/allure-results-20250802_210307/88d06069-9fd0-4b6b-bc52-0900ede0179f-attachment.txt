@@ -1,5 +1,0 @@
-INFO     project_logger:log.py:46 开始测试: TestAssertionUtils.test_assertion_utils_regex_match
-INFO     api_monitor_logger:log.py:57 断言通过: 文本匹配正则 World \d+
-INFO     api_monitor_logger:log.py:57 断言通过: 文本匹配正则 ^Hello
-ERROR    api_monitor_logger:log.py:61 断言失败: 文本不匹配正则 ^Failure
-INFO     project_logger:log.py:46 测试完成: TestAssertionUtils.test_assertion_utils_regex_match, 耗时: 0.01秒

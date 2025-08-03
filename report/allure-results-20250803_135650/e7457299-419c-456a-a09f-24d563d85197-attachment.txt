@@ -1,0 +1,7 @@
+INFO     project_logger:log.py:46 开始测试: TestChatGatewayWithDynamicData.test_data_source_cleanup
+ERROR    project_logger:log.py:49 MySQL连接失败: (2003, "Can't connect to MySQL server on '8.133.246.113' (timed out)")
+INFO     project_logger:log.py:46 聊天测试用例总数: []
+INFO     project_logger:log.py:46 关闭数据库连接: redis_test
+INFO     project_logger:log.py:46 数据源连接已清理
+INFO     project_logger:log.py:46 慢速测试警告: TestChatGatewayWithDynamicData.test_data_source_cleanup 耗时 10.01秒
+INFO     project_logger:log.py:46 测试完成: TestChatGatewayWithDynamicData.test_data_source_cleanup, 耗时: 10.02秒
