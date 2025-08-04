@@ -1,5 +1,0 @@
-{
-  "exception_type": "ZeroDivisionError",
-  "exception_message": "division by zero",
-  "traceback": "Traceback (most recent call last):\n  File \"E:\\bgtest\\testcase\\test_allure_simple.py\", line 62, in test_exception_handling\n    result = test_data[\"a\"] / test_data[\"b\"]\n             ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~\nZeroDivisionError: division by zero\n"
-}

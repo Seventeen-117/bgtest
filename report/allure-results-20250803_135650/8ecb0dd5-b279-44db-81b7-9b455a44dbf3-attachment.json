@@ -1,5 +1,0 @@
-{
-  "exception_type": "OperationalError",
-  "exception_message": "(psycopg2.OperationalError) could not translate host name \"123456@8.133.246.113\" to address: Non-recoverable failure in name resolution\n\n(Background on this error at: https://sqlalche.me/e/20/e3q8)",
-  "traceback": "NoneType: None\n"
-}

@@ -1,0 +1,11 @@
+INFO     project_logger:log.py:46 开始测试: TestDataSourceSwitcherExample.test_multi_environment_example
+INFO     project_logger:log.py:46 成功切换到数据源: database - mysql_dev
+ERROR    project_logger:log.py:49 MySQL连接失败: (2003, "Can't connect to MySQL server on '8.133.246.113' (timed out)")
+INFO     project_logger:log.py:46 从数据库加载数据: mysql - dev (0 条)
+INFO     project_logger:log.py:46 环境 dev 获取到 0 条测试用例
+INFO     project_logger:log.py:46 成功切换到数据源: database - mysql_test
+ERROR    project_logger:log.py:49 MySQL连接失败: (2003, "Can't connect to MySQL server on '8.133.246.113' (timed out)")
+INFO     project_logger:log.py:46 从数据库加载数据: mysql - test (0 条)
+INFO     project_logger:log.py:46 环境 test 获取到 0 条测试用例
+INFO     project_logger:log.py:46 慢速测试警告: TestDataSourceSwitcherExample.test_multi_environment_example 耗时 20.01秒
+INFO     project_logger:log.py:46 测试完成: TestDataSourceSwitcherExample.test_multi_environment_example, 耗时: 20.01秒

@@ -1,0 +1,5 @@
+INFO     project_logger:log.py:46 开始测试: TestDynamicDataSourceSwitcher.test_execute_query_on_current_source
+INFO     project_logger:log.py:46 成功切换到数据源: database - mysql_test
+ERROR    project_logger:log.py:49 MySQL连接失败: (2003, "Can't connect to MySQL server on '8.133.246.113' (timed out)")
+INFO     project_logger:log.py:46 慢速测试警告: TestDynamicDataSourceSwitcher.test_execute_query_on_current_source 耗时 10.00秒
+INFO     project_logger:log.py:46 测试完成: TestDynamicDataSourceSwitcher.test_execute_query_on_current_source, 耗时: 10.06秒

@@ -1,0 +1,4 @@
+INFO     project_logger:log.py:46 开始测试: TestDynamicDataSourceSwitcher.test_with_decorator
+INFO     project_logger:log.py:46 成功切换到数据源: file - file_test_chat_gateway.yaml
+INFO     project_logger:log.py:46 使用装饰器成功获取 3 条数据
+INFO     project_logger:log.py:46 测试完成: TestDynamicDataSourceSwitcher.test_with_decorator, 耗时: 0.00秒

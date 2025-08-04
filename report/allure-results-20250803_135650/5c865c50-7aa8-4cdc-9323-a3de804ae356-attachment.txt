@@ -1,1 +1,0 @@
-请求失败: HTTPSConnectionPool(host='api.example.com', port=443): Max retries exceeded with url: /chat (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000012610A3FB10>: Failed to resolve 'api.example.com' ([Errno 11001] getaddrinfo failed)"))

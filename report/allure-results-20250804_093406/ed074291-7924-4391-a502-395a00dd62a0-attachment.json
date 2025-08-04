@@ -1,0 +1,5 @@
+{
+  "exception_type": "AssertionError",
+  "exception_message": "应该拒绝无效的数据源配置\nassert not True",
+  "traceback": "NoneType: None\n"
+}

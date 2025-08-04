@@ -1,0 +1,15 @@
+INFO     project_logger:log.py:46 开始测试: Unknown.test_http_data_file
+INFO     project_logger:log.py:46 HTTP数据测试 - 用例: 1 - 测试GET请求
+INFO     api_monitor_logger:log.py:57 HTTP请求开始: {"timestamp": 1754271403.5965147, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "params": {}, "json_data": {}, "headers": {}}
+INFO     api_monitor_logger:log.py:57 HTTP请求成功: {"timestamp": 1754271406.9443054, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "status_code": 200, "execution_time_ms": 3347.79, "response_size": 292, "status": "success"}
+INFO     project_logger:log.py:46 接口返回: {'userId': 1, 'id': 1, 'title': 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'body': 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'}
+INFO     project_logger:log.py:46 HTTP数据测试 - 用例: 2 - 测试POST请求
+INFO     api_monitor_logger:log.py:57 HTTP请求开始: {"timestamp": 1754271406.9462528, "method": "POST", "url": "https://jsonplaceholder.typicode.com/posts", "params": {}, "json_data": {"title": "test", "body": "test body", "userId": 1}, "headers": {}}
+INFO     api_monitor_logger:log.py:57 HTTP请求成功: {"timestamp": 1754271409.991002, "method": "POST", "url": "https://jsonplaceholder.typicode.com/posts", "status_code": 201, "execution_time_ms": 3044.75, "response_size": 72, "status": "success"}
+INFO     project_logger:log.py:46 接口返回: {'title': 'test', 'body': 'test body', 'userId': 1, 'id': 101}
+INFO     project_logger:log.py:46 HTTP数据测试 - 用例: 3 - 测试带参数GET
+INFO     api_monitor_logger:log.py:57 HTTP请求开始: {"timestamp": 1754271409.9919753, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "params": {}, "json_data": {}, "headers": {}}
+INFO     api_monitor_logger:log.py:57 HTTP请求成功: {"timestamp": 1754271412.9899569, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "status_code": 200, "execution_time_ms": 2997.98, "response_size": 292, "status": "success"}
+INFO     project_logger:log.py:46 接口返回: {'userId': 1, 'id': 1, 'title': 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'body': 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'}
+INFO     project_logger:log.py:46 慢速测试警告: Unknown.test_http_data_file 耗时 9.39秒
+INFO     project_logger:log.py:46 测试完成: Unknown.test_http_data_file, 耗时: 9.40秒

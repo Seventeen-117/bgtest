@@ -1,0 +1,5 @@
+INFO     project_logger:log.py:46 开始测试: Unknown.test_parameterized_database[postgresql]
+INFO     project_logger:log.py:46 切换到数据库: postgresql - test
+INFO     project_logger:log.py:46 切换到数据库: postgresql - test
+ERROR    project_logger:log.py:49 创建数据库引擎失败: No module named 'psycopg2'
+INFO     project_logger:log.py:46 测试完成: Unknown.test_parameterized_database[postgresql], 耗时: 0.02秒

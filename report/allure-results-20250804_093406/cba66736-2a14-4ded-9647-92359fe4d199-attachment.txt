@@ -1,0 +1,3 @@
+INFO     project_logger:log.py:46 开始测试: TestDynamicDataSource.test_data_from_db_url_format
+INFO     project_logger:log.py:46 使用db://格式从数据库加载了 0 条测试数据
+INFO     project_logger:log.py:46 测试完成: TestDynamicDataSource.test_data_from_db_url_format, 耗时: 0.00秒

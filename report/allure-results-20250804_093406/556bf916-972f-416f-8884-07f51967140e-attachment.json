@@ -1,0 +1,5 @@
+{
+  "exception_type": "AssertionError",
+  "exception_message": "assert None is not None",
+  "traceback": "NoneType: None\n"
+}

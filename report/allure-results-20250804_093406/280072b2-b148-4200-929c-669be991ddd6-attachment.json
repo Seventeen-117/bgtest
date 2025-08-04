@@ -1,0 +1,5 @@
+{
+  "exception_type": "AssertionError",
+  "exception_message": "assert None is not None",
+  "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\sy_li\\bgtest\\utils\\allure_decorators.py\", line 31, in wrapper\n    result = func(*args, **kwargs)\n  File \"C:\\Users\\sy_li\\bgtest\\utils\\test_decorators.py\", line 29, in wrapper\n    return func(*args, **kwargs)\n  File \"C:\\Users\\sy_li\\bgtest\\utils\\test_decorators.py\", line 286, in wrapper\n    return func(*args, **kwargs)\n  File \"C:\\Users\\sy_li\\bgtest\\utils\\test_decorators.py\", line 300, in wrapper\n    return func(*args, **kwargs)\n  File \"C:\\Users\\sy_li\\bgtest\\testcase\\test_orm_integration.py\", line 72, in test_database_switching\n    assert session is not None\nAssertionError: assert None is not None\n"
+}

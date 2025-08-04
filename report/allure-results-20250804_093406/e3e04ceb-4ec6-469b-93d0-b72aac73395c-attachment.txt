@@ -1,0 +1,5 @@
+INFO     project_logger:log.py:46 开始测试: TestDataSourceSwitcherIntegration.test_integration_with_existing_framework
+INFO     project_logger:log.py:46 成功切换到数据源: file - file_test_chat_gateway.yaml
+INFO     project_logger:log.py:46 从文件加载数据: caseparams/test_chat_gateway.yaml (3 条)
+INFO     project_logger:log.py:46 数据源切换器与现有框架集成测试成功
+INFO     project_logger:log.py:46 测试完成: TestDataSourceSwitcherIntegration.test_integration_with_existing_framework, 耗时: 0.01秒

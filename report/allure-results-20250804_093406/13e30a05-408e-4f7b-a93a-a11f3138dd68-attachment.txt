@@ -1,0 +1,5 @@
+INFO     project_logger:log.py:46 开始测试: TestAssertionUtils.test_assertion_utils_response_contains
+INFO     api_monitor_logger:log.py:57 断言通过: 响应包含文本 success
+INFO     api_monitor_logger:log.py:57 断言通过: 响应包含文本 World
+ERROR    api_monitor_logger:log.py:61 断言失败: 响应不包含文本 failure
+INFO     project_logger:log.py:46 测试完成: TestAssertionUtils.test_assertion_utils_response_contains, 耗时: 0.00秒

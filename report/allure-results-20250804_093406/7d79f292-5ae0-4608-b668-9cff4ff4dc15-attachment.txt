@@ -1,0 +1,12 @@
+INFO     project_logger:log.py:46 开始测试: TestDynamicDataSourceSwitcher.test_multiple_data_source_switching
+INFO     project_logger:log.py:46 成功切换到数据源: file - file_test_chat_gateway.yaml
+INFO     project_logger:log.py:46 从文件数据源获取 3 条数据
+INFO     project_logger:log.py:46 成功切换到数据源: database - mysql_test
+ERROR    project_logger:log.py:49 MySQL连接失败: (2003, "Can't connect to MySQL server on '8.133.246.113' (timed out)")
+INFO     project_logger:log.py:46 从数据库加载数据: mysql - test (0 条)
+INFO     project_logger:log.py:46 从数据库数据源获取 0 条数据
+INFO     project_logger:log.py:46 成功切换到数据源: redis - redis_test
+INFO     project_logger:log.py:46 从Redis数据源获取 1 条数据
+INFO     project_logger:log.py:46 数据源切换历史: 27 次切换
+INFO     project_logger:log.py:46 慢速测试警告: TestDynamicDataSourceSwitcher.test_multiple_data_source_switching 耗时 10.00秒
+INFO     project_logger:log.py:46 测试完成: TestDynamicDataSourceSwitcher.test_multiple_data_source_switching, 耗时: 10.00秒

@@ -5,16 +5,15 @@
 支持在测试用例中动态切换不同的数据源
 """
 
-import os
-import sys
-import yaml
 import json
-from typing import Dict, Any, List, Optional, Union, Callable
-from functools import wraps
+import os
 from contextlib import contextmanager
-from common.log import info, error, debug
+from functools import wraps
+from typing import Dict, Any, List, Optional, Union
+
 from common.data_source import DataSourceManager, get_db_data, get_test_data_from_db, get_redis_value, set_redis_value
 from common.get_caseparams import read_test_data
+from common.log import info, error
 
 
 class DynamicDataSourceSwitcher:
@@ -360,10 +359,224 @@ class DynamicDataSourceSwitcher:
             return []
     
     def _get_mixed_data(self) -> List[Dict[str, Any]]:
-        """获取混合数据源数据"""
-        # 这里可以实现混合数据源的逻辑
-        # 例如：文件数据 + 数据库数据的组合
-        return []
+        """
+        获取混合数据源数据
+        支持文件数据 + 数据库数据的组合逻辑
+        """
+        config = self._current_data_source
+        
+        try:
+            # 获取混合数据源配置
+            base_config = config.get('base_config', {})
+            dynamic_data_query = config.get('dynamic_data_query', '')
+            merge_strategy = config.get('merge_strategy', 'cross_product')
+            cache_config_key = config.get('cache_config_key', '')
+            
+            # 1. 加载基础数据（文件数据）
+            base_data = []
+            if base_config:
+                if isinstance(base_config, str):
+                    # 如果是字符串，直接作为文件路径
+                    base_data = self._get_file_data(base_config)
+                elif isinstance(base_config, dict):
+                    # 如果是字典，提取文件路径
+                    file_path = base_config.get('file_path') or base_config.get('path')
+                    if file_path:
+                        base_data = self._get_file_data(file_path)
+                    else:
+                        # 如果没有文件路径，将整个配置作为基础数据
+                        base_data = [base_config]
+            
+            # 2. 加载动态数据（数据库数据）
+            dynamic_data = []
+            if dynamic_data_query:
+                if dynamic_data_query.startswith('db://'):
+                    # 解析数据库查询
+                    parsed_config = self._parse_database_string(dynamic_data_query)
+                    if parsed_config:
+                        sql = parsed_config.get('sql', '')
+                        if sql:
+                            dynamic_data = self._get_database_data(sql)
+                else:
+                    # 直接作为SQL查询
+                    dynamic_data = self._get_database_data(dynamic_data_query)
+            
+            # 3. 加载缓存配置（Redis数据）
+            cache_config = {}
+            if cache_config_key:
+                try:
+                    cache_value = get_redis_value(cache_config_key, config.get('env', 'test'))
+                    if cache_value:
+                        if isinstance(cache_value, str):
+                            import json
+                            cache_config = json.loads(cache_value)
+                        else:
+                            cache_config = cache_value
+                except Exception as e:
+                    error(f"加载缓存配置失败: {e}")
+            
+            # 4. 合并数据
+            combined_data = self._merge_mixed_data(
+                base_data, 
+                dynamic_data, 
+                cache_config, 
+                merge_strategy
+            )
+            
+            info(f"混合数据源加载完成: 基础数据 {len(base_data)} 条, 动态数据 {len(dynamic_data)} 条, 合并后 {len(combined_data)} 条")
+            return combined_data
+            
+        except Exception as e:
+            error(f"获取混合数据源数据失败: {e}")
+            return []
+    
+    def _merge_mixed_data(self, base_data: List[Dict[str, Any]], 
+                         dynamic_data: List[Dict[str, Any]], 
+                         cache_config: Dict[str, Any],
+                         merge_strategy: str = 'cross_product') -> List[Dict[str, Any]]:
+        """
+        合并混合数据
+        :param base_data: 基础数据（文件数据）
+        :param dynamic_data: 动态数据（数据库数据）
+        :param cache_config: 缓存配置（Redis数据）
+        :param merge_strategy: 合并策略
+        :return: 合并后的数据
+        """
+        try:
+            if not base_data and not dynamic_data:
+                return []
+            
+            if merge_strategy == 'cross_product':
+                return self._cross_product_merge(base_data, dynamic_data, cache_config)
+            elif merge_strategy == 'append':
+                return self._append_merge(base_data, dynamic_data, cache_config)
+            elif merge_strategy == 'override':
+                return self._override_merge(base_data, dynamic_data, cache_config)
+            else:
+                # 默认使用笛卡尔积合并
+                return self._cross_product_merge(base_data, dynamic_data, cache_config)
+                
+        except Exception as e:
+            error(f"合并混合数据失败: {e}")
+            return []
+    
+    def _cross_product_merge(self, base_data: List[Dict[str, Any]], 
+                            dynamic_data: List[Dict[str, Any]], 
+                            cache_config: Dict[str, Any]) -> List[Dict[str, Any]]:
+        """
+        笛卡尔积合并：为每个基础数据创建多个测试用例（基于动态数据）
+        """
+        merged_data = []
+        
+        # 如果没有基础数据，使用动态数据作为基础
+        if not base_data and dynamic_data:
+            for db_case in dynamic_data:
+                merged_case = db_case.copy()
+                merged_case.update(cache_config)
+                merged_case['data_source'] = 'mixed'
+                merged_case['merge_strategy'] = 'cross_product'
+                merged_data.append(merged_case)
+            return merged_data
+        
+        # 如果没有动态数据，使用基础数据
+        if not dynamic_data and base_data:
+            for base_case in base_data:
+                merged_case = base_case.copy()
+                merged_case.update(cache_config)
+                merged_case['data_source'] = 'mixed'
+                merged_case['merge_strategy'] = 'cross_product'
+                merged_data.append(merged_case)
+            return merged_data
+        
+        # 笛卡尔积合并
+        for base_case in base_data:
+            for db_case in dynamic_data:
+                # 合并基础数据和动态数据
+                merged_case = base_case.copy()
+                merged_case.update(db_case)
+                merged_case.update(cache_config)
+                merged_case['data_source'] = 'mixed'
+                merged_case['merge_strategy'] = 'cross_product'
+                merged_data.append(merged_case)
+        
+        return merged_data
+    
+    def _append_merge(self, base_data: List[Dict[str, Any]], 
+                     dynamic_data: List[Dict[str, Any]], 
+                     cache_config: Dict[str, Any]) -> List[Dict[str, Any]]:
+        """
+        追加合并：将动态数据追加到基础数据后面
+        """
+        merged_data = []
+        
+        # 添加基础数据
+        for base_case in base_data:
+            merged_case = base_case.copy()
+            merged_case.update(cache_config)
+            merged_case['data_source'] = 'mixed'
+            merged_case['merge_strategy'] = 'append'
+            merged_data.append(merged_case)
+        
+        # 添加动态数据
+        for db_case in dynamic_data:
+            merged_case = db_case.copy()
+            merged_case.update(cache_config)
+            merged_case['data_source'] = 'mixed'
+            merged_case['merge_strategy'] = 'append'
+            merged_data.append(merged_case)
+        
+        return merged_data
+    
+    def _override_merge(self, base_data: List[Dict[str, Any]], 
+                       dynamic_data: List[Dict[str, Any]], 
+                       cache_config: Dict[str, Any]) -> List[Dict[str, Any]]:
+        """
+        覆盖合并：动态数据覆盖基础数据中的相同字段
+        """
+        merged_data = []
+        
+        # 如果没有基础数据，使用动态数据
+        if not base_data and dynamic_data:
+            for db_case in dynamic_data:
+                merged_case = db_case.copy()
+                merged_case.update(cache_config)
+                merged_case['data_source'] = 'mixed'
+                merged_case['merge_strategy'] = 'override'
+                merged_data.append(merged_case)
+            return merged_data
+        
+        # 如果没有动态数据，使用基础数据
+        if not dynamic_data and base_data:
+            for base_case in base_data:
+                merged_case = base_case.copy()
+                merged_case.update(cache_config)
+                merged_case['data_source'] = 'mixed'
+                merged_case['merge_strategy'] = 'override'
+                merged_data.append(merged_case)
+            return merged_data
+        
+        # 覆盖合并：动态数据覆盖基础数据
+        for i, base_case in enumerate(base_data):
+            merged_case = base_case.copy()
+            
+            # 如果有对应的动态数据，进行覆盖
+            if i < len(dynamic_data):
+                merged_case.update(dynamic_data[i])
+            
+            merged_case.update(cache_config)
+            merged_case['data_source'] = 'mixed'
+            merged_case['merge_strategy'] = 'override'
+            merged_data.append(merged_case)
+        
+        # 如果动态数据比基础数据多，添加剩余的动态数据
+        for i in range(len(base_data), len(dynamic_data)):
+            merged_case = dynamic_data[i].copy()
+            merged_case.update(cache_config)
+            merged_case['data_source'] = 'mixed'
+            merged_case['merge_strategy'] = 'override'
+            merged_data.append(merged_case)
+        
+        return merged_data
     
     def _execute_database_query(self, query: str, **kwargs) -> List[Dict[str, Any]]:
         """执行数据库查询"""

@@ -1,0 +1,5 @@
+INFO     project_logger:log.py:46 开始测试: TestDatabaseFixtures.test_database_transaction_fixture
+INFO     project_logger:log.py:46 创建数据库会话: mysql+pymysql://bgtech:***@8.133.246.113:3306/bgpay?charset=utf8mb4
+INFO     project_logger:log.py:46 数据库事务提交成功
+INFO     project_logger:log.py:46 关闭数据库会话
+INFO     project_logger:log.py:46 测试完成: TestDatabaseFixtures.test_database_transaction_fixture, 耗时: 0.19秒

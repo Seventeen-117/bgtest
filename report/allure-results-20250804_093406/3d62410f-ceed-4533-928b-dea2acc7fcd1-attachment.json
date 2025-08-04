@@ -1,0 +1,5 @@
+{
+  "exception_type": "Exception",
+  "exception_message": "无法获取数据库会话: postgresql - test",
+  "traceback": "NoneType: None\n"
+}

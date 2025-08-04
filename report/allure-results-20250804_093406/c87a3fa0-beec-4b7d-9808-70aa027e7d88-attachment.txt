@@ -1,0 +1,6 @@
+INFO     project_logger:log.py:46 开始测试: TestDynamicDataSourceSwitcher.test_switch_to_redis_data_source
+INFO     project_logger:log.py:46 成功切换到数据源: redis - redis_test
+ERROR    project_logger:log.py:49 redis未安装，请运行: pip install redis
+INFO     project_logger:log.py:46 从Redis加载数据: test - test:user:123 (1 条)
+INFO     project_logger:log.py:46 成功从Redis数据源获取 1 条数据
+INFO     project_logger:log.py:46 测试完成: TestDynamicDataSourceSwitcher.test_switch_to_redis_data_source, 耗时: 0.00秒

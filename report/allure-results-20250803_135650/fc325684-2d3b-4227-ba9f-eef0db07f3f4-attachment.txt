@@ -1,2 +1,0 @@
-INFO     project_logger:log.py:46 开始测试: TestAllureSimple.test_exception_handling
-INFO     project_logger:log.py:46 测试完成: TestAllureSimple.test_exception_handling, 耗时: 0.01秒

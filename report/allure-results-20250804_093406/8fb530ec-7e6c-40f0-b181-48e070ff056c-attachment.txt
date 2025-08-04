@@ -1,0 +1,9 @@
+INFO     project_logger:log.py:46 开始测试: TestDataSourceSwitcherExample.test_context_manager_example
+INFO     project_logger:log.py:46 成功切换到数据源: database - mysql_test
+ERROR    project_logger:log.py:49 MySQL连接失败: (2003, "Can't connect to MySQL server on '8.133.246.113' (timed out)")
+INFO     project_logger:log.py:46 从数据库加载数据: mysql - test (0 条)
+INFO     project_logger:log.py:46 临时从数据库获取到 0 条数据
+INFO     project_logger:log.py:46 成功切换到数据源: file - file_test_chat_gateway.yaml
+INFO     project_logger:log.py:46 上下文管理器示例完成
+INFO     project_logger:log.py:46 慢速测试警告: TestDataSourceSwitcherExample.test_context_manager_example 耗时 10.00秒
+INFO     project_logger:log.py:46 测试完成: TestDataSourceSwitcherExample.test_context_manager_example, 耗时: 10.00秒

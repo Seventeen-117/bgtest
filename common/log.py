@@ -51,6 +51,10 @@ def error(msg):
 def debug(msg):
     logger.debug(msg)
 
+def warn(msg):
+    """警告日志输出函数"""
+    logger.warning(msg)
+
 # API监控日志输出函数
 def api_info(msg):
     """记录接口请求和响应数据"""

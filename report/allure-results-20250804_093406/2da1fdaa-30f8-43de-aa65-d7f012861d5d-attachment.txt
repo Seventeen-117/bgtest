@@ -1,0 +1,12 @@
+INFO     project_logger:log.py:46 开始测试: TestDynamicDataSourceSwitcher.test_cache_management
+INFO     project_logger:log.py:46 成功切换到数据源: database - mysql_test
+ERROR    project_logger:log.py:49 MySQL连接失败: (2003, "Can't connect to MySQL server on '8.133.246.113' (timed out)")
+INFO     project_logger:log.py:46 从数据库加载数据: mysql - test (0 条)
+INFO     project_logger:log.py:46 第一次获取数据: 0 条
+INFO     project_logger:log.py:46 第二次获取数据: 0 条
+INFO     project_logger:log.py:46 清除缓存: test_cache
+INFO     project_logger:log.py:46 缓存已清除
+INFO     project_logger:log.py:46 从数据库加载数据: mysql - test (0 条)
+INFO     project_logger:log.py:46 清除缓存后获取数据: 0 条
+INFO     project_logger:log.py:46 慢速测试警告: TestDynamicDataSourceSwitcher.test_cache_management 耗时 10.00秒
+INFO     project_logger:log.py:46 测试完成: TestDynamicDataSourceSwitcher.test_cache_management, 耗时: 10.01秒

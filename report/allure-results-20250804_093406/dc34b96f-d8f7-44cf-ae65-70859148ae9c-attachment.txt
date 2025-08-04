@@ -1,0 +1,10 @@
+INFO     project_logger:log.py:46 初始化数据库引擎
+INFO     project_logger:log.py:46 开始测试: TestDatabaseIntegration.test_sql_query
+INFO     project_logger:log.py:46 开始数据库集成测试
+INFO     project_logger:log.py:46 创建数据库会话: mysql+pymysql://bgtech:***@8.133.246.113:3306/bgpay?charset=utf8mb4
+INFO     project_logger:log.py:46 成功创建数据库引擎: sqlite_test
+INFO     project_logger:log.py:46 成功创建数据库会话: sqlite_test
+INFO     project_logger:log.py:46 SQL查询测试通过
+INFO     project_logger:log.py:46 关闭数据库会话
+INFO     project_logger:log.py:46 完成数据库集成测试
+INFO     project_logger:log.py:46 测试完成: TestDatabaseIntegration.test_sql_query, 耗时: 0.04秒

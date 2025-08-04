@@ -1,0 +1,6 @@
+INFO     project_logger:log.py:46 开始测试: TestDatabaseIntegration.test_multi_database_consistency[sqlite]
+INFO     project_logger:log.py:46 开始数据库集成测试
+INFO     project_logger:log.py:46 切换到数据库: sqlite - test
+INFO     project_logger:log.py:46 sqlite 数据库测试通过
+INFO     project_logger:log.py:46 完成数据库集成测试
+INFO     project_logger:log.py:46 测试完成: TestDatabaseIntegration.test_multi_database_consistency[sqlite], 耗时: 0.00秒

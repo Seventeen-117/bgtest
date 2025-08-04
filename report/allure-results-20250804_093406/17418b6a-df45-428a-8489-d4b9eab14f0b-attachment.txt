@@ -1,0 +1,6 @@
+INFO     project_logger:log.py:46 开始测试: TestDataSourceSwitcherIntegration.test_performance_comparison
+INFO     project_logger:log.py:46 成功切换到数据源: file - file_test_chat_gateway.yaml
+INFO     project_logger:log.py:46 数据源切换器耗时: 0.0000秒
+INFO     project_logger:log.py:46 传统方式耗时: 0.0049秒
+INFO     project_logger:log.py:46 性能差异: 0.0049秒
+INFO     project_logger:log.py:46 测试完成: TestDataSourceSwitcherIntegration.test_performance_comparison, 耗时: 0.01秒

@@ -1,0 +1,3 @@
+INFO     project_logger:log.py:46 开始测试: TestDynamicDataSourceSwitcher.test_error_handling
+INFO     project_logger:log.py:46 成功切换到数据源: file - file_config
+INFO     project_logger:log.py:46 测试完成: TestDynamicDataSourceSwitcher.test_error_handling, 耗时: 0.01秒

@@ -1,0 +1,15 @@
+INFO     project_logger:log.py:46 开始测试: TestDataSourceSwitcherExample.test_with_decorator_example
+INFO     project_logger:log.py:46 成功切换到数据源: file - file_test_chat_gateway.yaml
+INFO     project_logger:log.py:46 执行测试用例: 1
+INFO     project_logger:log.py:46 请求URL: http://localhost:8688/api/chatGatWay-internal
+INFO     project_logger:log.py:46 请求方法: POST
+INFO     project_logger:log.py:46 请求参数: {'message': '你好，今天天气怎么样？', 'user_id': 'user001'}
+INFO     project_logger:log.py:46 执行测试用例: 2
+INFO     project_logger:log.py:46 请求URL: http://localhost:8688/api/chatGatWay-internal
+INFO     project_logger:log.py:46 请求方法: POST
+INFO     project_logger:log.py:46 请求参数: {'user_id': 'user002'}
+INFO     project_logger:log.py:46 执行测试用例: 3
+INFO     project_logger:log.py:46 请求URL: http://localhost:8688/api/chatGatWay-internal
+INFO     project_logger:log.py:46 请求方法: POST
+INFO     project_logger:log.py:46 请求参数: {'message': 'What is the capital of France?', 'user_id': 'user003'}
+INFO     project_logger:log.py:46 测试完成: TestDataSourceSwitcherExample.test_with_decorator_example, 耗时: 0.00秒

@@ -1,0 +1,5 @@
+{
+  "exception_type": "AssertionError",
+  "exception_message": "执行查询失败\nassert 0 > 0\n +  where 0 = len([])",
+  "traceback": "NoneType: None\n"
+}

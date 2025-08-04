@@ -1,0 +1,4 @@
+INFO     project_logger:log.py:46 开始测试: Unknown.test_parameterized_database[sqlite]
+INFO     project_logger:log.py:46 切换到数据库: sqlite - test
+INFO     project_logger:log.py:46 切换到数据库: sqlite - test
+INFO     project_logger:log.py:46 测试完成: Unknown.test_parameterized_database[sqlite], 耗时: 0.19秒

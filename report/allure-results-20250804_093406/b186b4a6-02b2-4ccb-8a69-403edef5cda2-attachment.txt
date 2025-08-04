@@ -1,0 +1,10 @@
+INFO     project_logger:log.py:46 开始测试: TestDynamicDataSourceSwitcher.test_dynamic_sql_generation
+INFO     project_logger:log.py:46 成功切换到数据源: database - mysql_test
+ERROR    project_logger:log.py:49 MySQL连接失败: (2003, "Can't connect to MySQL server on '8.133.246.113' (timed out)")
+INFO     project_logger:log.py:46 动态SQL查询 'WHERE status = 'active'' 返回 0 条结果
+ERROR    project_logger:log.py:49 MySQL连接失败: (2003, "Can't connect to MySQL server on '8.133.246.113' (timed out)")
+INFO     project_logger:log.py:46 动态SQL查询 'WHERE priority = 'high'' 返回 0 条结果
+ERROR    project_logger:log.py:49 MySQL连接失败: (2003, "Can't connect to MySQL server on '8.133.246.113' (timed out)")
+INFO     project_logger:log.py:46 动态SQL查询 'WHERE category = 'api_test'' 返回 0 条结果
+INFO     project_logger:log.py:46 慢速测试警告: TestDynamicDataSourceSwitcher.test_dynamic_sql_generation 耗时 30.01秒
+INFO     project_logger:log.py:46 测试完成: TestDynamicDataSourceSwitcher.test_dynamic_sql_generation, 耗时: 30.01秒

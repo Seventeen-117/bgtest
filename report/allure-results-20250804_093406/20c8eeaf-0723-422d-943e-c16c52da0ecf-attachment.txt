@@ -1,0 +1,8 @@
+INFO     project_logger:log.py:46 开始测试: TestAssertionUtils.test_assertion_utils_fixture
+INFO     api_monitor_logger:log.py:57 断言通过: 1 == 1
+INFO     api_monitor_logger:log.py:57 断言通过: 条件为True
+INFO     api_monitor_logger:log.py:57 断言通过: 条件为False
+INFO     api_monitor_logger:log.py:57 断言通过: 值不为None
+INFO     api_monitor_logger:log.py:57 断言通过: test 在 ['test', 'example'] 中
+INFO     api_monitor_logger:log.py:57 断言通过: hello world 包含 world
+INFO     project_logger:log.py:46 测试完成: TestAssertionUtils.test_assertion_utils_fixture, 耗时: 0.00秒

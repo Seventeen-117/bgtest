@@ -1,9 +1,0 @@
-INFO     project_logger:log.py:46 开始测试: Unknown.test_http_data[case2]
-INFO     project_logger:log.py:46 执行用例: 3 - 测试带参数GET
-INFO     project_logger:log.py:46 请求地址: https://jsonplaceholder.typicode.com/posts/1
-INFO     project_logger:log.py:46 请求参数: {}
-INFO     api_monitor_logger:log.py:57 HTTP请求开始: {"timestamp": 1754201464.565053, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "params": {}, "json_data": {}, "headers": {}}
-ERROR    utils.http_utils:http_utils.py:147 请求失败: HTTPSConnectionPool(host='jsonplaceholder.typicode.com', port=443): Read timed out. (read timeout=30)
-ERROR    api_monitor_logger:log.py:61 HTTP请求失败: {"timestamp": 1754201501.2219398, "method": "GET", "url": "https://jsonplaceholder.typicode.com/posts/1", "status_code": null, "execution_time_ms": 36656.88, "response_size": 0, "status": "error", "error": "HTTPSConnectionPool(host='jsonplaceholder.typicode.com', port=443): Read timed out. (read timeout=30)"}
-INFO     project_logger:log.py:46 慢速测试警告: Unknown.test_http_data[case2] 耗时 36.66秒
-INFO     project_logger:log.py:46 测试完成: Unknown.test_http_data[case2], 耗时: 37.52秒

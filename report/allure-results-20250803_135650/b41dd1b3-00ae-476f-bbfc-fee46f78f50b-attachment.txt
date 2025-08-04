@@ -1,1 +1,0 @@
-[<TracebackEntry E:\bgtest\testcase\test_dynamic_data_source.py:66>]
